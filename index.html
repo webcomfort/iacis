@@ -1,280 +1,378 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<title>МПА СНГ — главная</title>
-<script src="./vendor/react.js"></script>
-<script src="./vendor/react-dom.js"></script>
-<script src="./support.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>МПА СНГ — главная</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./main.js"></script>
 </head>
 <body>
-<x-dc>
-<helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-<style>
-body{margin:0;background:#ffffff}
-a{color:#0068a6}a:hover{color:#00466f}
-*{box-sizing:border-box}
-button{font:inherit}
-.navbtn:hover{color:#0068a6}
-.iconbtn:hover{background:#eef4f9}
-.card:hover .cardtitle{color:#0068a6}
-.tag:hover{background:#0A3F73 !important;color:#ffffff !important;border-color:#0A3F73 !important}
-.prcard:hover,.prcard:focus-visible{transform:translateY(-4px)}
-.cardlink:hover{color:#0068a6 !important;text-decoration:underline !important}
-.mobonly{display:none !important}
-@keyframes heroprog{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-@media (prefers-reduced-motion:reduce){.heroprog{animation:none !important}}
-.herosoc:hover{background:#ffffff !important;color:#0a2540 !important;border-color:#ffffff !important}
-.dircard:hover .pill,.dircard:focus-visible .pill{transform:translateY(4px);background:#ffffff !important;color:#0a2540}
-@media (max-width:1180px){
-  .nav-desktop{display:none !important}
-  .mobonly{display:flex !important}
-  .socials{display:none !important}
-}
-@media (max-width:720px){
-  .hdr{height:56px !important}
-  .wrap{padding-left:20px !important;padding-right:20px !important}
-  .herofade{background:rgba(8,30,54,0.85) !important}
-  .brandname{display:none !important}
-  .hero{min-height:620px !important;height:auto !important}
-  .h1{font-size:38px !important}
-  .lead{font-size:18px !important}
-  .sec{padding-top:56px !important;padding-bottom:56px !important}
-  .h2{font-size:28px !important}
-  .langsw{display:none !important}
-}
-</style>
-</helmet>
-
-<div style="font-family: 'Golos Text', system-ui, sans-serif; color: #10202f; background: #ffffff; min-width: 320px">
+<div class="page">
 
 <!-- ============ HEADER ============ -->
-<header onMouseLeave="{{ closeMenu }}" style="position: sticky; top: 0; z-index: 50; background: #ffffff; border-bottom: 1px solid #e3e9ef">
-  <div class="hdr wrap" style="width: 100%; padding: 0 48px; height: {{ hdrH }}; display: flex; align-items: center; gap: 24px; transition: height 200ms ease">
-    <a href="#top" aria-label="МПА СНГ — на главную" style="display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0">
-      <img src="./assets/ea5cd78d4ec43cd43285107dabe56045.svg" alt="" style="width: {{ logoS }}; height: {{ logoS }}; display: block; transition: width 200ms ease, height 200ms ease">
-      <img class="brandname" src="./assets/b88b41036f76655651ed2f28d7c5ce74.svg" alt="Межпарламентская Ассамблея государств — участников Содружества Независимых Государств" style="height: {{ nameH }}; width: auto; display: block; transition: height 200ms ease">
+<header class="sticky top-0 z-50 bg-white [border-bottom:1px_solid_#e3e9ef]">
+  <div class="hdr wrap w-full [padding:0_48px] h-[72px] flex items-center gap-6 [transition:height_200ms_ease]">
+    <a href="#top" aria-label="МПА СНГ — на главную" class="flex items-center gap-3 no-underline shrink-0">
+      <img src="./assets/ea5cd78d4ec43cd43285107dabe56045.svg" alt="" class="w-12 h-12 block [transition:width_200ms_ease,_height_200ms_ease]">
+      <img class="brandname h-10 w-[auto] block [transition:height_200ms_ease]" src="./assets/b88b41036f76655651ed2f28d7c5ce74.svg" alt="Межпарламентская Ассамблея государств — участников Содружества Независимых Государств">
     </a>
 
-    <nav class="nav-desktop" aria-label="Основное меню" style="flex: 1 1 auto; display: flex; justify-content: center; min-width: 0">
-      <ul style="list-style: none; margin: 0; padding: 0; display: flex; gap: 2px; align-items: stretch">
-        <sc-for list="{{ nav }}" as="item" hint-placeholder-count="7">
-          <li onMouseEnter="{{ item.hover }}" style="display: flex">
-            <button class="navbtn" type="button" aria-expanded="{{ item.expanded }}" onClick="{{ item.toggle }}" style="background: none; border: 0; padding: 0 11px; height: 44px; font-size: 15px; font-weight: 500; color: {{ item.color }}; cursor: pointer; white-space: nowrap; border-bottom: 2px solid {{ item.bar }}">{{ item.label }}</button>
+    <nav class="nav-desktop [flex:1_1_auto] flex justify-center min-w-0" aria-label="Основное меню">
+      <ul class="list-none m-0 p-0 flex gap-[2px] items-stretch">
+        <li class="flex">
+            <button class="navbtn bg-none [border:0] [padding:0_11px] h-11 text-[15px] font-medium text-ink cursor-pointer whitespace-nowrap [border-bottom:2px_solid_transparent]" type="button" aria-expanded="false" data-menu-toggle="0" aria-controls="menu-0">Об организации</button>
           </li>
-        </sc-for>
+        <li class="flex">
+            <button class="navbtn bg-none [border:0] [padding:0_11px] h-11 text-[15px] font-medium text-ink cursor-pointer whitespace-nowrap [border-bottom:2px_solid_transparent]" type="button" aria-expanded="false" data-menu-toggle="1" aria-controls="menu-1">Деятельность</button>
+          </li>
+        <li class="flex">
+            <button class="navbtn bg-none [border:0] [padding:0_11px] h-11 text-[15px] font-medium text-ink cursor-pointer whitespace-nowrap [border-bottom:2px_solid_transparent]" type="button" aria-expanded="false" data-menu-toggle="2" aria-controls="menu-2">Законы и рекомендации</button>
+          </li>
+        <li class="flex">
+            <button class="navbtn bg-none [border:0] [padding:0_11px] h-11 text-[15px] font-medium text-ink cursor-pointer whitespace-nowrap [border-bottom:2px_solid_transparent]" type="button" aria-expanded="false" data-menu-toggle="3" aria-controls="menu-3">Документы</button>
+          </li>
+        <li class="flex">
+            <button class="navbtn bg-none [border:0] [padding:0_11px] h-11 text-[15px] font-medium text-ink cursor-pointer whitespace-nowrap [border-bottom:2px_solid_transparent]" type="button" aria-expanded="false" data-menu-toggle="4" aria-controls="menu-4">МИМРД</button>
+          </li>
+        <li class="flex">
+            <button class="navbtn bg-none [border:0] [padding:0_11px] h-11 text-[15px] font-medium text-ink cursor-pointer whitespace-nowrap [border-bottom:2px_solid_transparent]" type="button" aria-expanded="false" data-menu-toggle="5" aria-controls="menu-5">Новости</button>
+          </li>
+        <li class="flex">
+            <button class="navbtn bg-none [border:0] [padding:0_11px] h-11 text-[15px] font-medium text-ink cursor-pointer whitespace-nowrap [border-bottom:2px_solid_transparent]" type="button" aria-expanded="false" data-menu-toggle="6" aria-controls="menu-6">Медиа</button>
+          </li>
       </ul>
     </nav>
 
-    <div style="display: flex; align-items: center; gap: 4px; flex-shrink: 0; margin-left: auto">
-      <button class="iconbtn" type="button" aria-label="Поиск по сайту" aria-expanded="{{ siteOpen }}" onClick="{{ openSite }}" style="width: 44px; height: 44px; border: 0; border-radius: 8px; background: {{ siteBg }}; color: #10202f; display: flex; align-items: center; justify-content: center; cursor: pointer">
+    <div class="flex items-center gap-1 shrink-0 ml-[auto]">
+      <button class="iconbtn w-11 h-11 [border:0] rounded-[8px] bg-transparent text-ink flex items-center justify-center cursor-pointer" type="button" aria-label="Поиск по сайту" aria-expanded="false" aria-controls="header-search" data-search-mode="site">
         <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg>
       </button>
-      <div class="langsw" role="group" aria-label="Язык сайта" style="display: flex; align-items: center; margin: 0 6px; border: 1px solid #cfd9e3; border-radius: 8px; overflow: hidden; height: 34px">
-        <a href="#top" aria-current="true" style="padding: 0 10px; height: 34px; display: flex; align-items: center; font-size: 13px; font-weight: 700; background: #10202f; color: #ffffff; text-decoration: none">RU</a>
-        <a href="#en" style="padding: 0 10px; height: 34px; display: flex; align-items: center; font-size: 13px; font-weight: 600; color: #10202f; text-decoration: none">EN</a>
+      <div class="langsw flex items-center [margin:0_6px] [border:1px_solid_#cfd9e3] rounded-[8px] overflow-hidden h-[34px]" role="group" aria-label="Язык сайта">
+        <a href="#top" aria-current="true" class="[padding:0_10px] h-[34px] flex items-center text-[13px] font-bold bg-ink text-white no-underline">RU</a>
+        <a href="#en" class="[padding:0_10px] h-[34px] flex items-center text-[13px] font-semibold text-ink no-underline">EN</a>
       </div>
-      <button class="mobonly iconbtn" type="button" aria-label="Открыть меню" aria-expanded="{{ mobileOpen }}" onClick="{{ toggleMobile }}" style="width: 44px; height: 44px; border: 0; border-radius: 8px; background: none; color: #10202f; align-items: center; justify-content: center; cursor: pointer">
+      <button class="mobonly iconbtn w-11 h-11 [border:0] rounded-[8px] bg-none text-ink items-center justify-center cursor-pointer" type="button" aria-label="Открыть меню" aria-expanded="false" data-toggle-mobile aria-controls="mobile-menu">
         <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h16"></path></svg>
       </button>
     </div>
   </div>
 
-  <!-- search strip -->
-  <div style="max-height: {{ searchMax }}; overflow: hidden; transition: max-height 260ms ease; background: #f3f6f9; border-top: 1px solid {{ searchBorder }}">
-    <form onSubmit="{{ noSubmit }}" class="wrap" style="width: 100%; padding: 18px 48px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap">
-      <label for="q" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">{{ searchLabel }}</label>
-      <div style="flex: 1 1 420px; display: flex; align-items: center; gap: 10px; background: #ffffff; border: 1px solid #b9c7d4; border-radius: 10px; padding: 0 14px; height: 52px">
+  <!-- Search -->
+  <div id="header-search" hidden class="max-h-[none] overflow-hidden [transition:max-height_260ms_ease] [background:#f3f6f9] [border-top:1px_solid_#e3e9ef]">
+    <form id="site-search-form" role="search" class="wrap w-full [padding:18px_48px] flex gap-3 items-center flex-wrap">
+      <label for="q" class="absolute w-[1px] h-[1px] overflow-hidden [clip:rect(0_0_0_0)]">Поиск по сайту</label>
+      <div class="[flex:1_1_420px] flex items-center gap-[10px] bg-white [border:1px_solid_#b9c7d4] rounded-[10px] [padding:0_14px] h-[52px]">
         <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a5866" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg>
-        <input id="q" type="search" placeholder="{{ searchPh }}" style="flex: 1; border: 0; outline: none; font: inherit; font-size: 17px; color: #10202f; background: transparent; min-width: 0">
+        <input id="q" type="search" placeholder="Новости, мероприятия, документы, люди" class="[flex:1] [border:0] [outline:none] text-[17px] text-ink bg-transparent min-w-0">
       </div>
-      <div role="group" aria-label="Где искать" style="display: flex; align-items: stretch; height: 52px; border: 1px solid #b9c7d4; border-radius: 10px; overflow: hidden; background: #ffffff">
-        <button type="button" aria-pressed="{{ siteOpen }}" onClick="{{ openSite }}" style="height: 100%; padding: 0 18px; border: 0; border-radius: 0; background: {{ siteChipBg }}; color: {{ siteChipC }}; font-size: 14px; font-weight: 700; cursor: pointer; white-space: nowrap">По сайту</button>
-        <button type="button" aria-pressed="{{ docsOpen }}" onClick="{{ openDocs }}" style="height: 100%; padding: 0 18px; border: 0; border-left: 1px solid #b9c7d4; border-radius: 0; background: {{ docsChipBg }}; color: {{ docsChipC }}; font-size: 14px; font-weight: 700; cursor: pointer; white-space: nowrap">По базе документов</button>
+      <div role="group" aria-label="Где искать" class="flex items-stretch h-[52px] [border:1px_solid_#b9c7d4] rounded-[10px] overflow-hidden bg-white">
+        <button type="button" aria-pressed="true" data-search-mode="site" class="h-full [padding:0_18px] [border:0] rounded-none bg-white text-ink text-[14px] font-bold cursor-pointer whitespace-nowrap">По сайту</button>
+        <button type="button" aria-pressed="false" data-search-mode="docs" class="h-full [padding:0_18px] [border:0] [border-left:1px_solid_#b9c7d4] rounded-none bg-white text-ink text-[14px] font-bold cursor-pointer whitespace-nowrap">По базе документов</button>
       </div>
-      <button type="submit" style="height: 52px; padding: 0 26px; border: 0; border-radius: 10px; background: {{ accent }}; color: #ffffff; font-size: 16px; font-weight: 600; cursor: pointer">Найти</button>
-      <button type="button" aria-label="Закрыть поиск" onClick="{{ closeSearch }}" style="width: 44px; height: 44px; border: 0; background: none; color: #4a5866; cursor: pointer; display: flex; align-items: center; justify-content: center">
+      <button type="submit" class="h-[52px] [padding:0_26px] [border:0] rounded-[10px] bg-accent text-white text-[16px] font-semibold cursor-pointer">Найти</button>
+      <button type="button" aria-label="Закрыть поиск" data-close-search="" class="w-11 h-11 [border:0] bg-none text-[#4a5866] cursor-pointer flex items-center justify-center">
         <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12"></path><path d="M18 6 6 18"></path></svg>
       </button>
     </form>
+    <ul id="site-search-results" class="wrap m-0 max-h-64 list-none overflow-auto px-12 pb-4" aria-label="Результаты поиска" aria-live="polite" hidden></ul>
   </div>
 
   <!-- mega menu -->
-  <sc-if value="{{ megaOpen }}" hint-placeholder-val="{{ false }}">
-    <div style="position: absolute; left: 0; right: 0; top: 100%; background: #ffffff; border-top: 1px solid #e3e9ef; box-shadow: 0 18px 40px rgba(16,32,47,0.12)">
-      <div style="max-width: 1200px; margin: 0 auto; padding: 32px 24px 36px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px">
+  <div id="menu-0" data-mega-panel hidden class="absolute left-0 right-0 top-[100%] bg-white [border-top:1px_solid_#e3e9ef] [box-shadow:0_18px_40px_rgba(16,32,47,0.12)]">
+      <div class="max-w-[1200px] [margin:0_auto] [padding:32px_24px_36px] grid [grid-template-columns:repeat(3,_minmax(0,_1fr))] gap-10">
         <div>
-          <p style="margin: 0 0 8px; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5a6472">Раздел</p>
-          <p style="margin: 0 0 12px; font-size: 24px; font-weight: 700; line-height: 1.2">{{ mega.label }}</p>
-          <p style="margin: 0 0 18px; font-size: 15px; line-height: 1.55; color: #4a5866">{{ mega.desc }}</p>
-          <a href="#section" style="font-size: 15px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; min-height: 44px">Перейти в раздел
+          <p class="[margin:0_0_8px] text-[13px] font-semibold tracking-[0.06em] uppercase text-[#5a6472]">Раздел</p>
+          <p class="[margin:0_0_12px] text-[24px] font-bold leading-[1.2]">Об организации</p>
+          <p class="[margin:0_0_18px] text-[15px] leading-[1.55] text-[#4a5866]">История, структура и руководство Ассамблеи, парламенты государств-участников и партнёры.</p>
+          <a href="#top" class="text-[15px] font-semibold no-underline inline-flex items-center gap-[6px] min-h-11">Перейти в раздел
             <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
           </a>
         </div>
-        <sc-for list="{{ mega.cols }}" as="col" hint-placeholder-count="2">
-          <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; border-left: 1px solid #e3e9ef; padding-left: 28px">
-            <sc-for list="{{ col }}" as="link" hint-placeholder-count="3">
-              <li><a href="#page" style="display: flex; align-items: center; min-height: 44px; font-size: 16px; font-weight: 500; color: #10202f; text-decoration: none">{{ link }}</a></li>
-            </sc-for>
+        <ul class="list-none m-0 pt-0 pr-0 pb-0 flex flex-col gap-[2px] [border-left:1px_solid_#e3e9ef] pl-7">
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">История</a></li>
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Структура</a></li>
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Руководство</a></li>
           </ul>
-        </sc-for>
+        <ul class="list-none m-0 pt-0 pr-0 pb-0 flex flex-col gap-[2px] [border-left:1px_solid_#e3e9ef] pl-7">
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Членские парламенты</a></li>
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Партнёры</a></li>
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Контакты</a></li>
+          </ul>
       </div>
     </div>
-  </sc-if>
+  <div id="menu-1" data-mega-panel hidden class="absolute left-0 right-0 top-[100%] bg-white [border-top:1px_solid_#e3e9ef] [box-shadow:0_18px_40px_rgba(16,32,47,0.12)]">
+      <div class="max-w-[1200px] [margin:0_auto] [padding:32px_24px_36px] grid [grid-template-columns:repeat(3,_minmax(0,_1fr))] gap-10">
+        <div>
+          <p class="[margin:0_0_8px] text-[13px] font-semibold tracking-[0.06em] uppercase text-[#5a6472]">Раздел</p>
+          <p class="[margin:0_0_12px] text-[24px] font-bold leading-[1.2]">Деятельность</p>
+          <p class="[margin:0_0_18px] text-[15px] leading-[1.55] text-[#4a5866]">Основные направления работы МПА СНГ: законотворчество, наблюдение за выборами, проекты и мероприятия.</p>
+          <a href="#directions" class="text-[15px] font-semibold no-underline inline-flex items-center gap-[6px] min-h-11">Перейти в раздел
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+          </a>
+        </div>
+        <ul class="list-none m-0 pt-0 pr-0 pb-0 flex flex-col gap-[2px] [border-left:1px_solid_#e3e9ef] pl-7">
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Модельное законотворчество</a></li>
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Наблюдение за выборами</a></li>
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Проекты</a></li>
+          </ul>
+        <ul class="list-none m-0 pt-0 pr-0 pb-0 flex flex-col gap-[2px] [border-left:1px_solid_#e3e9ef] pl-7">
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Мероприятия</a></li>
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Международное сотрудничество</a></li>
+          </ul>
+      </div>
+    </div>
+  <div id="menu-2" data-mega-panel hidden class="absolute left-0 right-0 top-[100%] bg-white [border-top:1px_solid_#e3e9ef] [box-shadow:0_18px_40px_rgba(16,32,47,0.12)]">
+      <div class="max-w-[1200px] [margin:0_auto] [padding:32px_24px_36px] grid [grid-template-columns:repeat(3,_minmax(0,_1fr))] gap-10">
+        <div>
+          <p class="[margin:0_0_8px] text-[13px] font-semibold tracking-[0.06em] uppercase text-[#5a6472]">Раздел</p>
+          <p class="[margin:0_0_12px] text-[24px] font-bold leading-[1.2]">Законы и рекомендации</p>
+          <p class="[margin:0_0_18px] text-[15px] leading-[1.55] text-[#4a5866]">Каталог модельных законодательных актов и рекомендаций с комментариями.</p>
+          <a href="#documents" class="text-[15px] font-semibold no-underline inline-flex items-center gap-[6px] min-h-11">Перейти в раздел
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+          </a>
+        </div>
+        <ul class="list-none m-0 pt-0 pr-0 pb-0 flex flex-col gap-[2px] [border-left:1px_solid_#e3e9ef] pl-7">
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Каталог модельных актов</a></li>
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Рекомендации</a></li>
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Комментарии</a></li>
+          </ul>
+      </div>
+    </div>
+  <div id="menu-3" data-mega-panel hidden class="absolute left-0 right-0 top-[100%] bg-white [border-top:1px_solid_#e3e9ef] [box-shadow:0_18px_40px_rgba(16,32,47,0.12)]">
+      <div class="max-w-[1200px] [margin:0_auto] [padding:32px_24px_36px] grid [grid-template-columns:repeat(3,_minmax(0,_1fr))] gap-10">
+        <div>
+          <p class="[margin:0_0_8px] text-[13px] font-semibold tracking-[0.06em] uppercase text-[#5a6472]">Раздел</p>
+          <p class="[margin:0_0_12px] text-[24px] font-bold leading-[1.2]">Документы</p>
+          <p class="[margin:0_0_18px] text-[15px] leading-[1.55] text-[#4a5866]">База документов Ассамблеи с полнотекстовым поиском и фильтрами.</p>
+          <a href="#documents" class="text-[15px] font-semibold no-underline inline-flex items-center gap-[6px] min-h-11">Перейти в раздел
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+          </a>
+        </div>
+        <ul class="list-none m-0 pt-0 pr-0 pb-0 flex flex-col gap-[2px] [border-left:1px_solid_#e3e9ef] pl-7">
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">База документов</a></li>
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Регламенты</a></li>
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Словари</a></li>
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Отчёты</a></li>
+          </ul>
+      </div>
+    </div>
+  <div id="menu-4" data-mega-panel hidden class="absolute left-0 right-0 top-[100%] bg-white [border-top:1px_solid_#e3e9ef] [box-shadow:0_18px_40px_rgba(16,32,47,0.12)]">
+      <div class="max-w-[1200px] [margin:0_auto] [padding:32px_24px_36px] grid [grid-template-columns:repeat(3,_minmax(0,_1fr))] gap-10">
+        <div>
+          <p class="[margin:0_0_8px] text-[13px] font-semibold tracking-[0.06em] uppercase text-[#5a6472]">Раздел</p>
+          <p class="[margin:0_0_12px] text-[24px] font-bold leading-[1.2]">МИМРД</p>
+          <p class="[margin:0_0_18px] text-[15px] leading-[1.55] text-[#4a5866]">Международный институт мониторинга развития демократии, парламентаризма и соблюдения избирательных прав граждан государств — участников МПА СНГ.</p>
+          <a href="#directions" class="text-[15px] font-semibold no-underline inline-flex items-center gap-[6px] min-h-11">Перейти в раздел
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+          </a>
+        </div>
+        <ul class="list-none m-0 pt-0 pr-0 pb-0 flex flex-col gap-[2px] [border-left:1px_solid_#e3e9ef] pl-7">
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Об институте</a></li>
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Миссии наблюдения</a></li>
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Аналитика</a></li>
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Публикации</a></li>
+          </ul>
+      </div>
+    </div>
+  <div id="menu-5" data-mega-panel hidden class="absolute left-0 right-0 top-[100%] bg-white [border-top:1px_solid_#e3e9ef] [box-shadow:0_18px_40px_rgba(16,32,47,0.12)]">
+      <div class="max-w-[1200px] [margin:0_auto] [padding:32px_24px_36px] grid [grid-template-columns:repeat(3,_minmax(0,_1fr))] gap-10">
+        <div>
+          <p class="[margin:0_0_8px] text-[13px] font-semibold tracking-[0.06em] uppercase text-[#5a6472]">Раздел</p>
+          <p class="[margin:0_0_12px] text-[24px] font-bold leading-[1.2]">Новости</p>
+          <p class="[margin:0_0_18px] text-[15px] leading-[1.55] text-[#4a5866]">Новости Ассамблеи, анонсы мероприятий и пресс-релизы.</p>
+          <a href="#news" class="text-[15px] font-semibold no-underline inline-flex items-center gap-[6px] min-h-11">Перейти в раздел
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+          </a>
+        </div>
+        <ul class="list-none m-0 pt-0 pr-0 pb-0 flex flex-col gap-[2px] [border-left:1px_solid_#e3e9ef] pl-7">
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Лента новостей</a></li>
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Анонсы</a></li>
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Пресс-релизы</a></li>
+          </ul>
+      </div>
+    </div>
+  <div id="menu-6" data-mega-panel hidden class="absolute left-0 right-0 top-[100%] bg-white [border-top:1px_solid_#e3e9ef] [box-shadow:0_18px_40px_rgba(16,32,47,0.12)]">
+      <div class="max-w-[1200px] [margin:0_auto] [padding:32px_24px_36px] grid [grid-template-columns:repeat(3,_minmax(0,_1fr))] gap-10">
+        <div>
+          <p class="[margin:0_0_8px] text-[13px] font-semibold tracking-[0.06em] uppercase text-[#5a6472]">Раздел</p>
+          <p class="[margin:0_0_12px] text-[24px] font-bold leading-[1.2]">Медиа</p>
+          <p class="[margin:0_0_18px] text-[15px] leading-[1.55] text-[#4a5866]">Фото- и видеоматериалы, аккредитация СМИ и контакты пресс-службы.</p>
+          <a href="#news" class="text-[15px] font-semibold no-underline inline-flex items-center gap-[6px] min-h-11">Перейти в раздел
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+          </a>
+        </div>
+        <ul class="list-none m-0 pt-0 pr-0 pb-0 flex flex-col gap-[2px] [border-left:1px_solid_#e3e9ef] pl-7">
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Фото</a></li>
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Видео</a></li>
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Аккредитация</a></li>
+            <li><a href="#page" class="flex items-center min-h-11 text-[16px] font-medium text-ink no-underline">Контакты пресс-службы</a></li>
+          </ul>
+      </div>
+    </div>
 
   <!-- mobile menu -->
-  <sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
-    <nav aria-label="Мобильное меню" style="position: absolute; left: 0; right: 0; top: 100%; background: #ffffff; border-top: 1px solid #e3e9ef; box-shadow: 0 18px 40px rgba(16,32,47,0.12); padding: 8px 24px 20px">
-      <ul style="list-style: none; margin: 0; padding: 0">
-        <sc-for list="{{ nav }}" as="item" hint-placeholder-count="7">
-          <li style="border-bottom: 1px solid #edf1f5"><a href="#section" style="display: flex; align-items: center; justify-content: space-between; min-height: 52px; font-size: 17px; font-weight: 500; color: #10202f; text-decoration: none">{{ item.label }}<span aria-hidden="true" style="color: #8593a1">›</span></a></li>
-        </sc-for>
+  <nav id="mobile-menu" hidden aria-label="Мобильное меню" class="absolute left-0 right-0 top-[100%] bg-white [border-top:1px_solid_#e3e9ef] [box-shadow:0_18px_40px_rgba(16,32,47,0.12)] [padding:8px_24px_20px]">
+      <ul class="list-none m-0 p-0">
+        <li class="[border-bottom:1px_solid_#edf1f5]"><a href="#top" class="flex items-center justify-between min-h-[52px] text-[17px] font-medium text-ink no-underline">Об организации<span aria-hidden="true" class="text-[#8593a1]">›</span></a></li>
+        <li class="[border-bottom:1px_solid_#edf1f5]"><a href="#directions" class="flex items-center justify-between min-h-[52px] text-[17px] font-medium text-ink no-underline">Деятельность<span aria-hidden="true" class="text-[#8593a1]">›</span></a></li>
+        <li class="[border-bottom:1px_solid_#edf1f5]"><a href="#documents" class="flex items-center justify-between min-h-[52px] text-[17px] font-medium text-ink no-underline">Законы и рекомендации<span aria-hidden="true" class="text-[#8593a1]">›</span></a></li>
+        <li class="[border-bottom:1px_solid_#edf1f5]"><a href="#documents" class="flex items-center justify-between min-h-[52px] text-[17px] font-medium text-ink no-underline">Документы<span aria-hidden="true" class="text-[#8593a1]">›</span></a></li>
+        <li class="[border-bottom:1px_solid_#edf1f5]"><a href="#directions" class="flex items-center justify-between min-h-[52px] text-[17px] font-medium text-ink no-underline">МИМРД<span aria-hidden="true" class="text-[#8593a1]">›</span></a></li>
+        <li class="[border-bottom:1px_solid_#edf1f5]"><a href="#news" class="flex items-center justify-between min-h-[52px] text-[17px] font-medium text-ink no-underline">Новости<span aria-hidden="true" class="text-[#8593a1]">›</span></a></li>
+        <li class="[border-bottom:1px_solid_#edf1f5]"><a href="#news" class="flex items-center justify-between min-h-[52px] text-[17px] font-medium text-ink no-underline">Медиа<span aria-hidden="true" class="text-[#8593a1]">›</span></a></li>
       </ul>
-      <div style="display: flex; gap: 10px; margin-top: 16px">
-        <a href="#top" style="height: 44px; padding: 0 16px; display: flex; align-items: center; border-radius: 8px; background: #10202f; color: #ffffff; font-weight: 700; text-decoration: none">RU</a>
-        <a href="#en" style="height: 44px; padding: 0 16px; display: flex; align-items: center; border-radius: 8px; border: 1px solid #cfd9e3; color: #10202f; font-weight: 600; text-decoration: none">EN</a>
+      <div class="flex gap-[10px] mt-4">
+        <a href="#top" class="h-11 [padding:0_16px] flex items-center rounded-[8px] bg-ink text-white font-bold no-underline">RU</a>
+        <a href="#en" class="h-11 [padding:0_16px] flex items-center rounded-[8px] [border:1px_solid_#cfd9e3] text-ink font-semibold no-underline">EN</a>
       </div>
     </nav>
-  </sc-if>
 </header>
 
 
 
-<!-- ============ FOOTER ============ -->
 <main id="top">
 
 <!-- ============ HERO ============ -->
-<section class="hero" aria-labelledby="h1" aria-roledescription="карусель" style="position: relative; height: 760px; overflow: hidden; background: #0a2540; color: #ffffff; display: flex; flex-direction: column">
-  <sc-for list="{{ slides }}" as="s" hint-placeholder-count="3">
-    <div aria-hidden="true" style="position: absolute; inset: 0; overflow: hidden; opacity: {{ s.op }}; transition: opacity 900ms ease">
-      <img src="{{ s.img }}" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+<section class="hero relative h-[760px] overflow-hidden bg-navy text-white flex flex-col" data-carousel="hero" aria-labelledby="h1" aria-roledescription="карусель">
+  <div aria-hidden="true" data-slide data-active class="absolute inset-0 overflow-hidden [transition:opacity_900ms_ease]">
+      <img src="./assets/e3ed74e777f635c063598b9f321d1f5e.jpg" alt="" class="absolute inset-0 w-full h-full object-cover">
     </div>
-  </sc-for>
-  <div class="herofade" aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8, 30, 54, 0.92) 0%, rgba(8, 30, 54, 0.82) 45%, rgba(8, 30, 54, 0.55) 100%)"></div>
-  <div aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: 0; height: 160px; background: linear-gradient(0deg, rgba(8, 30, 54, 0.75) 0%, rgba(8, 30, 54, 0) 100%)"></div>
-  <div class="wrap" style="position: relative; flex: 1 1 auto; display: flex; align-items: center; width: 100%; padding: 48px 48px 32px">
-    <div style="max-width: 860px">
-      <p style="margin: 0 0 24px; display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 500; color: #d6e2ee">
-        <span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #ffd200; flex-shrink: 0"></span>
+  <div aria-hidden="true" data-slide class="absolute inset-0 overflow-hidden [transition:opacity_900ms_ease]">
+      <img src="./assets/239fa0ccbf8c4ae6be1bf2afd76e8b73.jpg" alt="" class="absolute inset-0 w-full h-full object-cover">
+    </div>
+  <div aria-hidden="true" data-slide class="absolute inset-0 overflow-hidden [transition:opacity_900ms_ease]">
+      <img src="./assets/7f5cfeca0bcb57130a39380ae416a85e.jpg" alt="" class="absolute inset-0 w-full h-full object-cover">
+    </div>
+  <div class="herofade absolute inset-0 [background:linear-gradient(90deg,_rgba(8,_30,_54,_0.92)_0%,_rgba(8,_30,_54,_0.82)_45%,_rgba(8,_30,_54,_0.55)_100%)]" aria-hidden="true"></div>
+  <div aria-hidden="true" class="absolute left-0 right-0 bottom-0 h-[160px] [background:linear-gradient(0deg,_rgba(8,_30,_54,_0.75)_0%,_rgba(8,_30,_54,_0)_100%)]"></div>
+  <div class="wrap relative [flex:1_1_auto] flex items-center w-full [padding:48px_48px_32px]">
+    <div class="max-w-[860px]">
+      <p class="[margin:0_0_24px] flex items-center gap-3 text-[15px] font-medium text-[#d6e2ee]">
+        <span aria-hidden="true" class="w-[10px] h-[10px] rounded-full bg-gold shrink-0"></span>
         Межпарламентская Ассамблея государств — участников Содружества Независимых Государств
       </p>
-      <h1 id="h1" class="h1" style="margin: 0; font-size: 68px; line-height: 1.04; font-weight: 700; letter-spacing: -0.02em">Межпарламентская Ассамблея СНГ</h1>
-      <p class="lead" style="margin: 24px 0 0; font-size: 23px; line-height: 1.45; color: #e3ecf5; max-width: 680px">Парламентский диалог и модельное законотворчество государств Содружества</p>
-      <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 44px">
-        <button type="button" onClick="{{ openSite }}" style="height: 56px; padding: 0 24px; border: 0; border-radius: 10px; background: #ffffff; color: #0a2540; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 10px; cursor: pointer">
+      <h1 id="h1" class="h1 m-0 text-[68px] leading-[1.04] font-bold tracking-[-0.02em]">Межпарламентская Ассамблея СНГ</h1>
+      <p class="lead [margin:24px_0_0] text-[23px] leading-[1.45] text-[#e3ecf5] max-w-[680px]">Парламентский диалог и модельное законотворчество государств Содружества</p>
+      <div class="flex flex-wrap gap-3 mt-11">
+        <button type="button" data-search-mode="site" class="h-14 [padding:0_24px] [border:0] rounded-[10px] bg-white text-navy text-[16px] font-semibold flex items-center gap-[10px] cursor-pointer">
           <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg>
           Поиск по сайту
         </button>
-        <button type="button" onClick="{{ openDocs }}" style="height: 56px; padding: 0 24px; border: 0; border-radius: 10px; background: #ffd200; color: #0a2540; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 10px; cursor: pointer">
+        <button type="button" data-search-mode="docs" class="h-14 [padding:0_24px] [border:0] rounded-[10px] bg-gold text-navy text-[16px] font-semibold flex items-center gap-[10px] cursor-pointer">
           <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h4"></path><path d="M14 3v5h5"></path><path d="M19 8v3"></path><circle cx="16.5" cy="16.5" r="3"></circle><path d="m18.8 18.8 2.2 2.2"></path></svg>
           Поиск по базе документов
         </button>
-        <a href="#en" lang="en" style="height: 56px; padding: 0 24px; border: 1.5px solid rgba(255,255,255,0.7); border-radius: 10px; background: transparent; color: #ffffff; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 10px; text-decoration: none">
+        <a href="#en" lang="en" class="h-14 [padding:0_24px] [border:1.5px_solid_rgba(255,255,255,0.7)] rounded-[10px] bg-transparent text-white text-[16px] font-semibold flex items-center gap-[10px] no-underline">
           <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3Z"></path></svg>
           English version
         </a>
       </div>
     </div>
   </div>
-  <div class="wrap" style="position: relative; width: 100%; padding: 0 48px 32px; display: flex; flex-wrap: wrap; gap: 20px 40px; align-items: flex-end; justify-content: space-between">
-    <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0">
-      <div style="display: flex; align-items: center; gap: 4px; flex-wrap: wrap">
-        <button type="button" aria-label="Предыдущий слайд" onClick="{{ heroPrev }}" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.5); background: transparent; color: #ffffff; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"></path></svg></button>
-        <sc-for list="{{ heroDots }}" as="d" hint-placeholder-count="3">
-          <button type="button" aria-label="{{ d.label }}" aria-current="{{ d.active }}" onClick="{{ d.go }}" style="width: 56px; height: 44px; border: 0; padding: 0 6px; background: none; cursor: pointer; display: flex; align-items: center">
-            <span style="position: relative; display: block; width: 100%; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.35); overflow: hidden">
-              <sc-if value="{{ d.running }}" hint-placeholder-val="{{ false }}">
-                <span class="heroprog" style="position: absolute; inset: 0; background: #ffd200; transform-origin: left center; animation: heroprog 7000ms linear forwards"></span>
-              </sc-if>
-              <sc-if value="{{ d.full }}" hint-placeholder-val="{{ false }}">
-                <span style="position: absolute; inset: 0; background: #ffd200"></span>
-              </sc-if>
+  <div class="wrap relative w-full [padding:0_48px_32px] flex flex-wrap gap-[20px_40px] items-end justify-between">
+    <div class="flex flex-col gap-[10px] min-w-0">
+      <div class="flex items-center gap-1 flex-wrap">
+        <button type="button" aria-label="Предыдущий слайд" data-carousel-step="-1" class="w-11 h-11 rounded-full [border:1px_solid_rgba(255,255,255,0.5)] bg-transparent text-white cursor-pointer flex items-center justify-center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"></path></svg></button>
+        <button type="button" aria-label="Слайд 1 из 3" aria-current="true" data-carousel-go="0" class="w-14 h-11 [border:0] [padding:0_6px] bg-none cursor-pointer flex items-center">
+            <span class="relative block w-full h-1 rounded-[2px] [background:rgba(255,255,255,0.35)] overflow-hidden">
+              <span data-slide-progress hidden class="heroprog absolute inset-0 bg-gold [transform-origin:left_center] [animation:heroprog_7000ms_linear_forwards]"></span>
+
             </span>
           </button>
-        </sc-for>
-        <button type="button" aria-label="Следующий слайд" onClick="{{ heroNext }}" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.5); background: transparent; color: #ffffff; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button>
-        <button type="button" aria-label="{{ pauseLabel }}" onClick="{{ togglePause }}" style="width: 44px; height: 44px; margin-left: 4px; border-radius: 50%; border: 0; background: rgba(255,255,255,0.14); color: #ffffff; cursor: pointer; display: flex; align-items: center; justify-content: center">
-          <sc-if value="{{ isPlaying }}" hint-placeholder-val="{{ true }}">
-            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg>
-          </sc-if>
-          <sc-if value="{{ isPaused }}" hint-placeholder-val="{{ false }}">
-            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"></path></svg>
-          </sc-if>
+        <button type="button" aria-label="Слайд 2 из 3" aria-current="false" data-carousel-go="1" class="w-14 h-11 [border:0] [padding:0_6px] bg-none cursor-pointer flex items-center">
+            <span class="relative block w-full h-1 rounded-[2px] [background:rgba(255,255,255,0.35)] overflow-hidden">
+              <span data-slide-progress hidden class="heroprog absolute inset-0 bg-gold [transform-origin:left_center] [animation:heroprog_7000ms_linear_forwards]"></span>
+
+            </span>
+          </button>
+        <button type="button" aria-label="Слайд 3 из 3" aria-current="false" data-carousel-go="2" class="w-14 h-11 [border:0] [padding:0_6px] bg-none cursor-pointer flex items-center">
+            <span class="relative block w-full h-1 rounded-[2px] [background:rgba(255,255,255,0.35)] overflow-hidden">
+              <span data-slide-progress hidden class="heroprog absolute inset-0 bg-gold [transform-origin:left_center] [animation:heroprog_7000ms_linear_forwards]"></span>
+
+            </span>
+          </button>
+        <button type="button" aria-label="Следующий слайд" data-carousel-step="1" class="w-11 h-11 rounded-full [border:1px_solid_rgba(255,255,255,0.5)] bg-transparent text-white cursor-pointer flex items-center justify-center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button>
+        <button type="button" aria-label="Остановить автопрокрутку" data-toggle-rotation="" class="w-11 h-11 ml-1 rounded-full [border:0] [background:rgba(255,255,255,0.14)] text-white cursor-pointer flex items-center justify-center">
+          <svg data-pause-icon aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg>
+          <svg data-play-icon hidden aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"></path></svg>
         </button>
-        <span style="margin-left: 12px; font-size: 14px; font-weight: 600; color: #ffffff; font-variant-numeric: tabular-nums">{{ slideNum }}</span>
+        <span data-slide-number class="ml-3 text-[14px] font-semibold text-white tabular-nums">01 / 03</span>
       </div>
     </div>
 
-    <div style="display: flex; align-items: center; gap: 14px">
-      <div style="display: flex; gap: 8px">
-        <a href="#tg" aria-label="Telegram" class="herosoc" style="width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; background: transparent; border: 1px solid rgba(255,255,255,0.5)"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M21 4.5 2.8 11.4c-.8.3-.8 1.4 0 1.7l4.6 1.5 1.8 5.6c.2.7 1.1.9 1.6.4l2.6-2.5 4.7 3.4c.6.4 1.4.1 1.6-.6L22.3 5.8c.2-.9-.6-1.6-1.3-1.3Z"></path><path d="m7.4 14.6 10-7.1-7.6 8.6"></path></svg></a>
-        <a href="#vk" aria-label="ВКонтакте" class="herosoc" style="width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; background: transparent; border: 1px solid rgba(255,255,255,0.5)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24"><rect x="2.5" y="4.5" width="19" height="15" rx="4.5" fill="none" stroke="currentColor" stroke-width="1.7"></rect><text x="12" y="15.6" text-anchor="middle" font-size="8.5" font-weight="700" fill="currentColor" font-family="Golos Text, sans-serif">VK</text></svg></a>
-        <a href="#yt" aria-label="YouTube" class="herosoc" style="width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; background: transparent; border: 1px solid rgba(255,255,255,0.5)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="4"></rect><path d="m10 9.3 5 2.7-5 2.7z"></path></svg></a>
-        <a href="#rt" aria-label="Rutube" class="herosoc" style="width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; background: transparent; border: 1px solid rgba(255,255,255,0.5)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.7"></rect><text x="12" y="16.4" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor" font-family="Golos Text, sans-serif">R</text></svg></a>
+    <div class="flex items-center gap-[14px]">
+      <div class="flex gap-2">
+        <a href="#tg" aria-label="Telegram" class="herosoc w-11 h-11 rounded-full flex items-center justify-center text-white bg-transparent [border:1px_solid_rgba(255,255,255,0.5)]"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M21 4.5 2.8 11.4c-.8.3-.8 1.4 0 1.7l4.6 1.5 1.8 5.6c.2.7 1.1.9 1.6.4l2.6-2.5 4.7 3.4c.6.4 1.4.1 1.6-.6L22.3 5.8c.2-.9-.6-1.6-1.3-1.3Z"></path><path d="m7.4 14.6 10-7.1-7.6 8.6"></path></svg></a>
+        <a href="#vk" aria-label="ВКонтакте" class="herosoc w-11 h-11 rounded-full flex items-center justify-center text-white bg-transparent [border:1px_solid_rgba(255,255,255,0.5)]"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24"><rect x="2.5" y="4.5" width="19" height="15" rx="4.5" fill="none" stroke="currentColor" stroke-width="1.7"></rect><text x="12" y="15.6" text-anchor="middle" font-size="8.5" font-weight="700" fill="currentColor" font-family="Golos Text, sans-serif">VK</text></svg></a>
+        <a href="#yt" aria-label="YouTube" class="herosoc w-11 h-11 rounded-full flex items-center justify-center text-white bg-transparent [border:1px_solid_rgba(255,255,255,0.5)]"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="4"></rect><path d="m10 9.3 5 2.7-5 2.7z"></path></svg></a>
+        <a href="#rt" aria-label="Rutube" class="herosoc w-11 h-11 rounded-full flex items-center justify-center text-white bg-transparent [border:1px_solid_rgba(255,255,255,0.5)]"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.7"></rect><text x="12" y="16.4" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor" font-family="Golos Text, sans-serif">R</text></svg></a>
       </div>
     </div>
   </div>
-  <nav aria-label="Государства — участники МПА СНГ" style="position: relative; background: rgb(243, 246, 249); color: #10202f; border-top: 1px solid #dde5ec">
-    <div class="wrap" style="width: 100%; padding: 0 48px; min-height: 56px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 28px">
-      
-      <ul style="list-style: none; margin: 0; padding: 0; flex: 1 1 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 20px">
-        <li><a href="#az" style="display: flex; align-items: center; gap: 8px; min-height: 44px; line-height: 1; color: #10202f; text-decoration: none; font-size: 14px; font-weight: 600"><svg aria-hidden="true" width="24" height="16" viewBox="0 0 24 16" style="display: block; flex-shrink: 0"><rect width="24" height="5.34" fill="#0092bc"></rect><rect y="5.33" width="24" height="5.34" fill="#e4002b"></rect><rect y="10.66" width="24" height="5.34" fill="#00af66"></rect><circle cx="11.4" cy="8" r="1.9" fill="#ffffff"></circle><circle cx="11.9" cy="8" r="1.55" fill="#e4002b"></circle><circle cx="13.9" cy="8" r="0.7" fill="#ffffff"></circle><rect width="24" height="16" fill="none" stroke="rgba(10,37,64,0.18)"></rect></svg>Азербайджан<span title="Время в Баку" style="display: block; font-size: 11px; line-height: 1; font-weight: 500; color: #4a5866; font-variant-numeric: tabular-nums">{{ times.az }}</span></a></li>
-        <li><a href="#am" style="display: flex; align-items: center; gap: 8px; min-height: 44px; line-height: 1; color: #10202f; text-decoration: none; font-size: 14px; font-weight: 600"><svg aria-hidden="true" width="24" height="16" viewBox="0 0 24 16" style="display: block; flex-shrink: 0"><rect width="24" height="5.34" fill="#d90012"></rect><rect y="5.33" width="24" height="5.34" fill="#0033a0"></rect><rect y="10.66" width="24" height="5.34" fill="#f2a800"></rect><rect width="24" height="16" fill="none" stroke="rgba(10,37,64,0.18)"></rect></svg>Армения<span title="Время в Ереване" style="display: block; font-size: 11px; line-height: 1; font-weight: 500; color: #4a5866; font-variant-numeric: tabular-nums">{{ times.am }}</span></a></li>
-        <li><a href="#by" style="display: flex; align-items: center; gap: 8px; min-height: 44px; line-height: 1; color: #10202f; text-decoration: none; font-size: 14px; font-weight: 600"><svg aria-hidden="true" width="24" height="16" viewBox="0 0 24 16" style="display: block; flex-shrink: 0"><rect width="24" height="10.67" fill="#c8313e"></rect><rect y="10.67" width="24" height="5.33" fill="#4aa657"></rect><rect width="3.4" height="16" fill="#ffffff"></rect><path d="M1.7 1.5 2.9 3 1.7 4.5 0.5 3zM1.7 6.5 2.9 8 1.7 9.5 0.5 8zM1.7 11.5 2.9 13 1.7 14.5 0.5 13z" fill="#c8313e"></path><rect width="24" height="16" fill="none" stroke="rgba(10,37,64,0.18)"></rect></svg>Беларусь<span title="Время в Минске" style="display: block; font-size: 11px; line-height: 1; font-weight: 500; color: #4a5866; font-variant-numeric: tabular-nums">{{ times.by }}</span></a></li>
-        <li><a href="#kz" style="display: flex; align-items: center; gap: 8px; min-height: 44px; line-height: 1; color: #10202f; text-decoration: none; font-size: 14px; font-weight: 600"><svg aria-hidden="true" width="24" height="16" viewBox="0 0 24 16" style="display: block; flex-shrink: 0"><rect width="24" height="16" fill="#00afca"></rect><circle cx="12" cy="7" r="2.6" fill="#fec50c"></circle><path d="M8.5 11.2c2.2.9 4.8.9 7 0" stroke="#fec50c" stroke-width="0.9" fill="none"></path><rect x="1.4" y="1.5" width="1.1" height="13" fill="#fec50c" opacity="0.85"></rect><rect width="24" height="16" fill="none" stroke="rgba(10,37,64,0.18)"></rect></svg>Казахстан<span title="Время в Астане" style="display: block; font-size: 11px; line-height: 1; font-weight: 500; color: #4a5866; font-variant-numeric: tabular-nums">{{ times.kz }}</span></a></li>
-        <li><a href="#kg" style="display: flex; align-items: center; gap: 8px; min-height: 44px; line-height: 1; color: #10202f; text-decoration: none; font-size: 14px; font-weight: 600"><svg aria-hidden="true" width="24" height="16" viewBox="0 0 24 16" style="display: block; flex-shrink: 0"><rect width="24" height="16" fill="#e8112d"></rect><circle cx="12" cy="8" r="4.4" fill="#ffef00"></circle><circle cx="12" cy="8" r="2.4" fill="#e8112d"></circle><path d="M10.2 7.4h3.6M10.2 8.6h3.6" stroke="#ffef00" stroke-width="0.5"></path><rect width="24" height="16" fill="none" stroke="rgba(10,37,64,0.18)"></rect></svg>Кыргызстан<span title="Время в Бишкеке" style="display: block; font-size: 11px; line-height: 1; font-weight: 500; color: #4a5866; font-variant-numeric: tabular-nums">{{ times.kg }}</span></a></li>
-        <li><a href="#ru" style="display: flex; align-items: center; gap: 8px; min-height: 44px; line-height: 1; color: #10202f; text-decoration: none; font-size: 14px; font-weight: 600"><svg aria-hidden="true" width="24" height="16" viewBox="0 0 24 16" style="display: block; flex-shrink: 0"><rect width="24" height="5.34" fill="#ffffff"></rect><rect y="5.33" width="24" height="5.34" fill="#0039a6"></rect><rect y="10.66" width="24" height="5.34" fill="#d52b1e"></rect><rect width="24" height="16" fill="none" stroke="rgba(10,37,64,0.18)"></rect></svg>Россия<span title="Время в Москве" style="display: block; font-size: 11px; line-height: 1; font-weight: 500; color: #4a5866; font-variant-numeric: tabular-nums">{{ times.ru }}</span></a></li>
-        <li><a href="#tj" style="display: flex; align-items: center; gap: 8px; min-height: 44px; line-height: 1; color: #10202f; text-decoration: none; font-size: 14px; font-weight: 600"><svg aria-hidden="true" width="24" height="16" viewBox="0 0 24 16" style="display: block; flex-shrink: 0"><rect width="24" height="4.6" fill="#cc0000"></rect><rect y="4.57" width="24" height="6.86" fill="#ffffff"></rect><rect y="11.43" width="24" height="4.57" fill="#006600"></rect><path d="M10.4 8.6h3.2l-.4-1.6-.8.7-.8-1-.8 1-.8-.7z" fill="#f8c300"></path><rect width="24" height="16" fill="none" stroke="rgba(10,37,64,0.18)"></rect></svg>Таджикистан<span title="Время в Душанбе" style="display: block; font-size: 11px; line-height: 1; font-weight: 500; color: #4a5866; font-variant-numeric: tabular-nums">{{ times.tj }}</span></a></li>
-        <li><a href="#uz" style="display: flex; align-items: center; gap: 8px; min-height: 44px; line-height: 1; color: #10202f; text-decoration: none; font-size: 14px; font-weight: 600"><svg aria-hidden="true" width="24" height="16" viewBox="0 0 24 16" style="display: block; flex-shrink: 0"><rect width="24" height="5.2" fill="#0099b5"></rect><rect y="5.2" width="24" height="0.6" fill="#ce1126"></rect><rect y="5.8" width="24" height="4.4" fill="#ffffff"></rect><rect y="10.2" width="24" height="0.6" fill="#ce1126"></rect><rect y="10.8" width="24" height="5.2" fill="#1eb53a"></rect><circle cx="4" cy="2.6" r="1.6" fill="#ffffff"></circle><circle cx="4.6" cy="2.4" r="1.4" fill="#0099b5"></circle><rect width="24" height="16" fill="none" stroke="rgba(10,37,64,0.18)"></rect></svg>Узбекистан<span title="Время в Ташкенте" style="display: block; font-size: 11px; line-height: 1; font-weight: 500; color: #4a5866; font-variant-numeric: tabular-nums">{{ times.uz }}</span></a></li>
+  <nav aria-label="Государства — участники МПА СНГ" class="relative [background:rgb(243,_246,_249)] text-ink [border-top:1px_solid_#dde5ec]">
+    <div class="wrap w-full [padding:0_48px] min-h-14 flex flex-wrap items-center gap-[4px_28px]">
+
+      <ul class="list-none m-0 p-0 [flex:1_1_auto] flex flex-wrap items-center justify-between gap-[0_20px]">
+        <li><a href="#az" class="flex items-center gap-2 min-h-11 leading-[1] text-ink no-underline text-[14px] font-semibold"><svg aria-hidden="true" width="24" height="16" viewBox="0 0 24 16" class="block shrink-0"><rect width="24" height="5.34" fill="#0092bc"></rect><rect y="5.33" width="24" height="5.34" fill="#e4002b"></rect><rect y="10.66" width="24" height="5.34" fill="#00af66"></rect><circle cx="11.4" cy="8" r="1.9" fill="#ffffff"></circle><circle cx="11.9" cy="8" r="1.55" fill="#e4002b"></circle><circle cx="13.9" cy="8" r="0.7" fill="#ffffff"></circle><rect width="24" height="16" fill="none" stroke="rgba(10,37,64,0.18)"></rect></svg>Азербайджан<time data-zone="Asia/Baku" title="Время в Баку" class="block text-[11px] leading-[1] font-medium text-[#4a5866] tabular-nums"></time></a></li>
+        <li><a href="#am" class="flex items-center gap-2 min-h-11 leading-[1] text-ink no-underline text-[14px] font-semibold"><svg aria-hidden="true" width="24" height="16" viewBox="0 0 24 16" class="block shrink-0"><rect width="24" height="5.34" fill="#d90012"></rect><rect y="5.33" width="24" height="5.34" fill="#0033a0"></rect><rect y="10.66" width="24" height="5.34" fill="#f2a800"></rect><rect width="24" height="16" fill="none" stroke="rgba(10,37,64,0.18)"></rect></svg>Армения<time data-zone="Asia/Yerevan" title="Время в Ереване" class="block text-[11px] leading-[1] font-medium text-[#4a5866] tabular-nums"></time></a></li>
+        <li><a href="#by" class="flex items-center gap-2 min-h-11 leading-[1] text-ink no-underline text-[14px] font-semibold"><svg aria-hidden="true" width="24" height="16" viewBox="0 0 24 16" class="block shrink-0"><rect width="24" height="10.67" fill="#c8313e"></rect><rect y="10.67" width="24" height="5.33" fill="#4aa657"></rect><rect width="3.4" height="16" fill="#ffffff"></rect><path d="M1.7 1.5 2.9 3 1.7 4.5 0.5 3zM1.7 6.5 2.9 8 1.7 9.5 0.5 8zM1.7 11.5 2.9 13 1.7 14.5 0.5 13z" fill="#c8313e"></path><rect width="24" height="16" fill="none" stroke="rgba(10,37,64,0.18)"></rect></svg>Беларусь<time data-zone="Europe/Minsk" title="Время в Минске" class="block text-[11px] leading-[1] font-medium text-[#4a5866] tabular-nums"></time></a></li>
+        <li><a href="#kz" class="flex items-center gap-2 min-h-11 leading-[1] text-ink no-underline text-[14px] font-semibold"><svg aria-hidden="true" width="24" height="16" viewBox="0 0 24 16" class="block shrink-0"><rect width="24" height="16" fill="#00afca"></rect><circle cx="12" cy="7" r="2.6" fill="#fec50c"></circle><path d="M8.5 11.2c2.2.9 4.8.9 7 0" stroke="#fec50c" stroke-width="0.9" fill="none"></path><rect x="1.4" y="1.5" width="1.1" height="13" fill="#fec50c" opacity="0.85"></rect><rect width="24" height="16" fill="none" stroke="rgba(10,37,64,0.18)"></rect></svg>Казахстан<time data-zone="Asia/Almaty" title="Время в Астане" class="block text-[11px] leading-[1] font-medium text-[#4a5866] tabular-nums"></time></a></li>
+        <li><a href="#kg" class="flex items-center gap-2 min-h-11 leading-[1] text-ink no-underline text-[14px] font-semibold"><svg aria-hidden="true" width="24" height="16" viewBox="0 0 24 16" class="block shrink-0"><rect width="24" height="16" fill="#e8112d"></rect><circle cx="12" cy="8" r="4.4" fill="#ffef00"></circle><circle cx="12" cy="8" r="2.4" fill="#e8112d"></circle><path d="M10.2 7.4h3.6M10.2 8.6h3.6" stroke="#ffef00" stroke-width="0.5"></path><rect width="24" height="16" fill="none" stroke="rgba(10,37,64,0.18)"></rect></svg>Кыргызстан<time data-zone="Asia/Bishkek" title="Время в Бишкеке" class="block text-[11px] leading-[1] font-medium text-[#4a5866] tabular-nums"></time></a></li>
+        <li><a href="#ru" class="flex items-center gap-2 min-h-11 leading-[1] text-ink no-underline text-[14px] font-semibold"><svg aria-hidden="true" width="24" height="16" viewBox="0 0 24 16" class="block shrink-0"><rect width="24" height="5.34" fill="#ffffff"></rect><rect y="5.33" width="24" height="5.34" fill="#0039a6"></rect><rect y="10.66" width="24" height="5.34" fill="#d52b1e"></rect><rect width="24" height="16" fill="none" stroke="rgba(10,37,64,0.18)"></rect></svg>Россия<time data-zone="Europe/Moscow" title="Время в Москве" class="block text-[11px] leading-[1] font-medium text-[#4a5866] tabular-nums"></time></a></li>
+        <li><a href="#tj" class="flex items-center gap-2 min-h-11 leading-[1] text-ink no-underline text-[14px] font-semibold"><svg aria-hidden="true" width="24" height="16" viewBox="0 0 24 16" class="block shrink-0"><rect width="24" height="4.6" fill="#cc0000"></rect><rect y="4.57" width="24" height="6.86" fill="#ffffff"></rect><rect y="11.43" width="24" height="4.57" fill="#006600"></rect><path d="M10.4 8.6h3.2l-.4-1.6-.8.7-.8-1-.8 1-.8-.7z" fill="#f8c300"></path><rect width="24" height="16" fill="none" stroke="rgba(10,37,64,0.18)"></rect></svg>Таджикистан<time data-zone="Asia/Dushanbe" title="Время в Душанбе" class="block text-[11px] leading-[1] font-medium text-[#4a5866] tabular-nums"></time></a></li>
+        <li><a href="#uz" class="flex items-center gap-2 min-h-11 leading-[1] text-ink no-underline text-[14px] font-semibold"><svg aria-hidden="true" width="24" height="16" viewBox="0 0 24 16" class="block shrink-0"><rect width="24" height="5.2" fill="#0099b5"></rect><rect y="5.2" width="24" height="0.6" fill="#ce1126"></rect><rect y="5.8" width="24" height="4.4" fill="#ffffff"></rect><rect y="10.2" width="24" height="0.6" fill="#ce1126"></rect><rect y="10.8" width="24" height="5.2" fill="#1eb53a"></rect><circle cx="4" cy="2.6" r="1.6" fill="#ffffff"></circle><circle cx="4.6" cy="2.4" r="1.4" fill="#0099b5"></circle><rect width="24" height="16" fill="none" stroke="rgba(10,37,64,0.18)"></rect></svg>Узбекистан<time data-zone="Asia/Tashkent" title="Время в Ташкенте" class="block text-[11px] leading-[1] font-medium text-[#4a5866] tabular-nums"></time></a></li>
       </ul>
     </div>
   </nav>
 </section>
 
 <!-- ============ DIRECTIONS ============ -->
-<section class="sec" aria-labelledby="dir-h" style="padding: 96px 0 88px">
-  <div class="wrap" style="width: 100%; padding: 0 48px">
-    
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px">
+<section class="sec [padding:96px_0_88px]" id="directions" aria-labelledby="dir-h">
+  <h2 id="dir-h" class="sr-only">Направления работы</h2>
+  <div class="wrap w-full [padding:0_48px]">
 
-      <a href="#lawmaking" class="dircard" style="position: relative; overflow: hidden; min-height: 440px; border-radius: 24px; background: #0a3f73; color: #ffffff; text-decoration: none; display: flex; flex-direction: column; padding: 44px 40px 48px">
-        <span aria-hidden="true" style="position: absolute; left: -140px; top: 70px; width: 640px; height: 640px; border-radius: 50%; background: #0b5592"></span>
-        <span aria-hidden="true" style="position: absolute; left: -110px; top: 260px; width: 400px; height: 400px; border-radius: 50%; background: #1468a8"></span>
-        <span style="position: relative; display: flex; flex-direction: column; gap: 18px; flex: 1">
-          <span style="font-size: 32px; font-weight: 700; line-height: 1.18; letter-spacing: -0.01em">Модельное законотворчество</span>
-          <span style="font-size: 18px; line-height: 1.5; color: #f2f7fc; max-width: 400px">Модельные законы и рекомендации для сближения национального законодательства государств Содружества</span>
-          <span style="position: relative; margin-top: auto; align-self: flex-start; padding-bottom: 6px">
-            <span aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 6px; bottom: 0; border: 2px solid #ffffff; border-radius: 32px"></span>
-            <span class="pill" style="position: relative; display: inline-flex; align-items: center; height: 60px; padding: 0 40px; border: 2px solid #ffffff; border-radius: 32px; background: #1468a8; font-size: 17px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; transition: transform 150ms ease, background 150ms ease, color 150ms ease">Подробнее</span>
+    <div class="grid [grid-template-columns:repeat(auto-fit,_minmax(320px,_1fr))] gap-6">
+
+      <a href="#lawmaking" class="dircard relative overflow-hidden min-h-[440px] rounded-[24px] [background:#0a3f73] text-white no-underline flex flex-col [padding:44px_40px_48px]">
+        <span aria-hidden="true" class="absolute left-[-140px] top-[70px] w-[640px] h-[640px] rounded-full [background:#0b5592]"></span>
+        <span aria-hidden="true" class="absolute left-[-110px] top-[260px] w-[400px] h-[400px] rounded-full [background:#1468a8]"></span>
+        <span class="relative flex flex-col gap-[18px] [flex:1]">
+          <span class="text-[32px] font-bold leading-[1.18] tracking-[-0.01em]">Модельное законотворчество</span>
+          <span class="text-[18px] leading-[1.5] text-[#f2f7fc] max-w-[400px]">Модельные законы и рекомендации для сближения национального законодательства государств Содружества</span>
+          <span class="relative mt-[auto] [align-self:flex-start] pb-[6px]">
+            <span aria-hidden="true" class="absolute left-0 right-0 top-[6px] bottom-0 [border:2px_solid_#ffffff] rounded-[32px]"></span>
+            <span class="pill relative inline-flex items-center h-[60px] [padding:0_40px] [border:2px_solid_#ffffff] rounded-[32px] [background:#1468a8] text-[17px] font-bold tracking-[0.08em] uppercase [transition:transform_150ms_ease,_background_150ms_ease,_color_150ms_ease]">Подробнее</span>
           </span>
         </span>
       </a>
 
-      <a href="#elections" class="dircard" style="position: relative; overflow: hidden; min-height: 440px; border-radius: 24px; background: #0a2540; color: #ffffff; text-decoration: none; display: flex; flex-direction: column; padding: 44px 40px 48px">
-        <span aria-hidden="true" style="position: absolute; left: -140px; top: 70px; width: 640px; height: 640px; border-radius: 50%; background: #11365c"></span>
-        <span aria-hidden="true" style="position: absolute; left: -110px; top: 260px; width: 400px; height: 400px; border-radius: 50%; background: #1a4875"></span>
-        <span style="position: relative; display: flex; flex-direction: column; gap: 18px; flex: 1">
-          
-          <span style="font-size: 32px; font-weight: 700; line-height: 1.18; letter-spacing: -0.01em">Наблюдение за выборами</span>
-          <span style="font-size: 18px; line-height: 1.5; color: #f2f7fc; max-width: 400px">Международные миссии наблюдения за выборами и референдумами, аналитика и мониторинг избирательных прав</span>
-          <span style="position: relative; margin-top: auto; align-self: flex-start; padding-bottom: 6px">
-            <span aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 6px; bottom: 0; border: 2px solid #ffffff; border-radius: 32px"></span>
-            <span class="pill" style="position: relative; display: inline-flex; align-items: center; height: 60px; padding: 0 40px; border: 2px solid #ffffff; border-radius: 32px; background: #1a4875; font-size: 17px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; transition: transform 150ms ease, background 150ms ease, color 150ms ease">Подробнее</span>
+      <a href="#elections" class="dircard relative overflow-hidden min-h-[440px] rounded-[24px] bg-navy text-white no-underline flex flex-col [padding:44px_40px_48px]">
+        <span aria-hidden="true" class="absolute left-[-140px] top-[70px] w-[640px] h-[640px] rounded-full [background:#11365c]"></span>
+        <span aria-hidden="true" class="absolute left-[-110px] top-[260px] w-[400px] h-[400px] rounded-full [background:#1a4875]"></span>
+        <span class="relative flex flex-col gap-[18px] [flex:1]">
+
+          <span class="text-[32px] font-bold leading-[1.18] tracking-[-0.01em]">Наблюдение за выборами</span>
+          <span class="text-[18px] leading-[1.5] text-[#f2f7fc] max-w-[400px]">Международные миссии наблюдения за выборами и референдумами, аналитика и мониторинг избирательных прав</span>
+          <span class="relative mt-[auto] [align-self:flex-start] pb-[6px]">
+            <span aria-hidden="true" class="absolute left-0 right-0 top-[6px] bottom-0 [border:2px_solid_#ffffff] rounded-[32px]"></span>
+            <span class="pill relative inline-flex items-center h-[60px] [padding:0_40px] [border:2px_solid_#ffffff] rounded-[32px] [background:#1a4875] text-[17px] font-bold tracking-[0.08em] uppercase [transition:transform_150ms_ease,_background_150ms_ease,_color_150ms_ease]">Подробнее</span>
           </span>
         </span>
       </a>
 
-      <a href="#projects" class="dircard" style="position: relative; overflow: hidden; min-height: 440px; border-radius: 24px; background: #06535b; color: #ffffff; text-decoration: none; display: flex; flex-direction: column; padding: 44px 40px 48px">
-        <span aria-hidden="true" style="position: absolute; left: -140px; top: 70px; width: 640px; height: 640px; border-radius: 50%; background: #08656e"></span>
-        <span aria-hidden="true" style="position: absolute; left: -110px; top: 260px; width: 400px; height: 400px; border-radius: 50%; background: #0c7780"></span>
-        <span style="position: relative; display: flex; flex-direction: column; gap: 18px; flex: 1">
-          <span style="font-size: 32px; font-weight: 700; line-height: 1.18; letter-spacing: -0.01em">Проекты</span>
-          <span style="font-size: 18px; line-height: 1.5; color: #f2f7fc; max-width: 400px">Международные форумы, конференции, олимпиады и образовательные программы Ассамблеи</span>
-          <span style="position: relative; margin-top: auto; align-self: flex-start; padding-bottom: 6px">
-            <span aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 6px; bottom: 0; border: 2px solid #ffffff; border-radius: 32px"></span>
-            <span class="pill" style="position: relative; display: inline-flex; align-items: center; height: 60px; padding: 0 40px; border: 2px solid #ffffff; border-radius: 32px; background: #0c7780; font-size: 17px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; transition: transform 150ms ease, background 150ms ease, color 150ms ease">Подробнее</span>
+      <a href="#projects" class="dircard relative overflow-hidden min-h-[440px] rounded-[24px] [background:#06535b] text-white no-underline flex flex-col [padding:44px_40px_48px]">
+        <span aria-hidden="true" class="absolute left-[-140px] top-[70px] w-[640px] h-[640px] rounded-full [background:#08656e]"></span>
+        <span aria-hidden="true" class="absolute left-[-110px] top-[260px] w-[400px] h-[400px] rounded-full [background:#0c7780]"></span>
+        <span class="relative flex flex-col gap-[18px] [flex:1]">
+          <span class="text-[32px] font-bold leading-[1.18] tracking-[-0.01em]">Проекты</span>
+          <span class="text-[18px] leading-[1.5] text-[#f2f7fc] max-w-[400px]">Международные форумы, конференции, олимпиады и образовательные программы Ассамблеи</span>
+          <span class="relative mt-[auto] [align-self:flex-start] pb-[6px]">
+            <span aria-hidden="true" class="absolute left-0 right-0 top-[6px] bottom-0 [border:2px_solid_#ffffff] rounded-[32px]"></span>
+            <span class="pill relative inline-flex items-center h-[60px] [padding:0_40px] [border:2px_solid_#ffffff] rounded-[32px] [background:#0c7780] text-[17px] font-bold tracking-[0.08em] uppercase [transition:transform_150ms_ease,_background_150ms_ease,_color_150ms_ease]">Подробнее</span>
           </span>
         </span>
       </a>
@@ -284,108 +382,177 @@ button{font:inherit}
 </section>
 
 <!-- ============ ACTUAL: NEWS ============ -->
-<section class="sec" aria-labelledby="news-h" style="padding: 88px 0 48px; background: #f3f6f9">
-  <div class="wrap" style="width: 100%; padding: 0 48px">
-    <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 32px">
-      <h2 id="news-h" class="h2" style="margin: 0; font-size: 36px; line-height: 1.15; font-weight: 700; letter-spacing: -0.01em">Новости</h2>
-      <a href="#news" style="font-size: 15px; font-weight: 600; color: #0a3f73; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; min-height: 44px">Все новости <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"></path><path d="M20 4 11 13"></path><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"></path></svg></a>
+<section class="sec [padding:88px_0_48px] [background:#f3f6f9]" id="news" aria-labelledby="news-h">
+  <div class="wrap w-full [padding:0_48px]">
+    <div class="flex items-baseline justify-between gap-4 flex-wrap mb-8">
+      <h2 id="news-h" class="h2 m-0 text-[36px] leading-[1.15] font-bold tracking-[-0.01em]">Новости</h2>
+      <a href="#news" class="text-[15px] font-semibold text-[#0a3f73] no-underline inline-flex items-center gap-2 min-h-11">Все новости <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"></path><path d="M20 4 11 13"></path><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"></path></svg></a>
     </div>
-    
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px">
-      <sc-for list="{{ news }}" as="n" hint-placeholder-count="4">
-        <a href="#news" class="card" style="display: flex; flex-direction: column; background: #ffffff; border-radius: 14px; overflow: hidden; text-decoration: none; color: #10202f; border: 1px solid #e1e8ee">
-          <span style="position: relative; display: block">
-            <img src="{{ n.img }}" alt="" style="width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; background: #dde6ee">
-            <span style="position: absolute; left: 14px; top: 14px; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 6px 10px; border-radius: 6px; background: {{ n.tagBg }}; color: #ffffff; box-shadow: 0 2px 6px rgba(10,37,64,0.25)">{{ n.tag }}</span>
+
+    <div class="grid [grid-template-columns:repeat(auto-fit,_minmax(260px,_1fr))] gap-6">
+      <a href="#news" class="card flex flex-col bg-white rounded-[14px] overflow-hidden no-underline text-ink [border:1px_solid_#e1e8ee]">
+          <span class="relative block">
+            <img src="./assets/239fa0ccbf8c4ae6be1bf2afd76e8b73.jpg" alt="" class="w-full [aspect-ratio:16_/_9] object-cover block [background:#dde6ee]">
+            <span class="absolute left-[14px] top-[14px] text-[12px] font-bold tracking-[0.04em] uppercase [padding:6px_10px] rounded-[6px] bg-navy text-white [box-shadow:0_2px_6px_rgba(10,37,64,0.25)]">Наблюдение за выборами</span>
           </span>
-          <span style="padding: 20px 20px 24px; display: flex; flex-direction: column; gap: 10px"><span style="font-size: 14px; color: #5a6472">{{ n.date }} года</span>
-            <span class="cardtitle" style="font-size: 17px; font-weight: 600; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden">{{ n.title }}</span>
+          <span class="[padding:20px_20px_24px] flex flex-col gap-[10px]"><span class="text-[14px] text-[#5a6472]">26 октября 2026 года</span>
+            <span class="cardtitle text-[17px] font-semibold leading-[1.4] [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical] overflow-hidden">Наблюдатели от МПА СНГ вели мониторинг выборов в Сербии</span>
           </span>
         </a>
-      </sc-for>
+      <a href="#news" class="card flex flex-col bg-white rounded-[14px] overflow-hidden no-underline text-ink [border:1px_solid_#e1e8ee]">
+          <span class="relative block">
+            <img src="./assets/290848de6df6ba70e0fbb2268bdecaf3.jpg" alt="" class="w-full [aspect-ratio:16_/_9] object-cover block [background:#dde6ee]">
+            <span class="absolute left-[14px] top-[14px] text-[12px] font-bold tracking-[0.04em] uppercase [padding:6px_10px] rounded-[6px] [background:#0A3F73] text-white [box-shadow:0_2px_6px_rgba(10,37,64,0.25)]">Законотворчество</span>
+          </span>
+          <span class="[padding:20px_20px_24px] flex flex-col gap-[10px]"><span class="text-[14px] text-[#5a6472]">23 октября 2026 года</span>
+            <span class="cardtitle text-[17px] font-semibold leading-[1.4] [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical] overflow-hidden">В СНГ разрабатывают Глоссарий в сфере искусственного интеллекта</span>
+          </span>
+        </a>
+      <a href="#news" class="card flex flex-col bg-white rounded-[14px] overflow-hidden no-underline text-ink [border:1px_solid_#e1e8ee]">
+          <span class="relative block">
+            <img src="./assets/7f5cfeca0bcb57130a39380ae416a85e.jpg" alt="" class="w-full [aspect-ratio:16_/_9] object-cover block [background:#dde6ee]">
+            <span class="absolute left-[14px] top-[14px] text-[12px] font-bold tracking-[0.04em] uppercase [padding:6px_10px] rounded-[6px] [background:#06535b] text-white [box-shadow:0_2px_6px_rgba(10,37,64,0.25)]">Мероприятия</span>
+          </span>
+          <span class="[padding:20px_20px_24px] flex flex-col gap-[10px]"><span class="text-[14px] text-[#5a6472]">23 октября 2026 года</span>
+            <span class="cardtitle text-[17px] font-semibold leading-[1.4] [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical] overflow-hidden">Парламентарии стран Содружества провели выездную встречу в Ломоносове</span>
+          </span>
+        </a>
+      <a href="#news" class="card flex flex-col bg-white rounded-[14px] overflow-hidden no-underline text-ink [border:1px_solid_#e1e8ee]">
+          <span class="relative block">
+            <img src="./assets/e3ed74e777f635c063598b9f321d1f5e.jpg" alt="" class="w-full [aspect-ratio:16_/_9] object-cover block [background:#dde6ee]">
+            <span class="absolute left-[14px] top-[14px] text-[12px] font-bold tracking-[0.04em] uppercase [padding:6px_10px] rounded-[6px] [background:#5a1f6b] text-white [box-shadow:0_2px_6px_rgba(10,37,64,0.25)]">Образование</span>
+          </span>
+          <span class="[padding:20px_20px_24px] flex flex-col gap-[10px]"><span class="text-[14px] text-[#5a6472]">23 октября 2026 года</span>
+            <span class="cardtitle text-[17px] font-semibold leading-[1.4] [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical] overflow-hidden">На форуме Ассоциации школ России и Беларуси рассказали о гуманитарной олимпиаде для школьников СНГ</span>
+          </span>
+        </a>
     </div>
-    
+
   </div>
 </section>
 
 <!-- ============ ACTUAL: EVENTS + BANNERS ============ -->
-<section class="sec" aria-labelledby="ev-h" style="padding: 48px 0 96px; background: #f3f6f9">
-  <div class="wrap" style="width: 100%; padding: 0 48px; display: flex; flex-wrap: wrap; gap: 24px; align-items: stretch">
+<section class="sec [padding:48px_0_96px] [background:#f3f6f9]" id="events" aria-labelledby="ev-h">
+  <div class="wrap w-full [padding:0_48px] flex flex-wrap gap-6 items-stretch">
 
-    <div style="flex: 1 1 340px; min-width: 0; background: #ffffff; border-radius: 16px; border: 1px solid #e1e8ee; padding: 28px; display: flex; flex-direction: column">
-      <h3 id="ev-h" style="margin: 0 0 8px; font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #4a5866">События</h3>
-      <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column">
-        <sc-for list="{{ events }}" as="e" hint-placeholder-count="3">
-          <li style="border-bottom: 1px solid #edf1f5">
-            <a href="#event" class="card" style="display: flex; gap: 18px; padding: 18px 0; text-decoration: none; color: #10202f">
-              <span style="flex-shrink: 0; width: 64px; height: 68px; border-radius: 10px; background: #0a2540; color: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: center">
-                <span style="font-size: 26px; font-weight: 700; line-height: 1">{{ e.day }}</span>
-                <span style="font-size: 13px; font-weight: 500; color: #cfdbe7; margin-top: 4px">{{ e.mon }}</span>
+    <div class="[flex:1_1_340px] min-w-0 bg-white rounded-[16px] [border:1px_solid_#e1e8ee] [padding:28px] flex flex-col">
+      <h3 id="ev-h" class="[margin:0_0_8px] text-[14px] font-bold tracking-[0.06em] uppercase text-[#4a5866]">События</h3>
+      <ul class="list-none m-0 p-0 flex flex-col">
+        <li class="[border-bottom:1px_solid_#edf1f5]">
+            <a href="#event" class="card flex gap-[18px] [padding:18px_0] no-underline text-ink">
+              <span class="shrink-0 w-16 h-[68px] rounded-[10px] bg-navy text-white flex flex-col items-center justify-center">
+                <span class="text-[26px] font-bold leading-[1]">28</span>
+                <span class="text-[13px] font-medium text-[#cfdbe7] mt-1">окт</span>
               </span>
-              <span style="display: flex; flex-direction: column; gap: 6px; min-width: 0">
-                <span class="cardtitle" style="font-size: 16px; font-weight: 600; line-height: 1.4">{{ e.title }}</span>
-                <span style="font-size: 14px; color: #5a6472; display: flex; align-items: center; gap: 6px">
+              <span class="flex flex-col gap-[6px] min-w-0">
+                <span class="cardtitle text-[16px] font-semibold leading-[1.4]">Международный форум «Дни креативной экономики»</span>
+                <span class="text-[14px] text-[#5a6472] flex items-center gap-[6px]">
                   <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>
                   <span>Таврический дворец, Санкт-Петербург</span>
                 </span>
               </span>
             </a>
           </li>
-        </sc-for>
+        <li class="[border-bottom:1px_solid_#edf1f5]">
+            <a href="#event" class="card flex gap-[18px] [padding:18px_0] no-underline text-ink">
+              <span class="shrink-0 w-16 h-[68px] rounded-[10px] bg-navy text-white flex flex-col items-center justify-center">
+                <span class="text-[26px] font-bold leading-[1]">05</span>
+                <span class="text-[13px] font-medium text-[#cfdbe7] mt-1">ноя</span>
+              </span>
+              <span class="flex flex-col gap-[6px] min-w-0">
+                <span class="cardtitle text-[16px] font-semibold leading-[1.4]">Заседание Экспертного совета по культуре при МПА СНГ</span>
+                <span class="text-[14px] text-[#5a6472] flex items-center gap-[6px]">
+                  <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>
+                  <span>Таврический дворец, Санкт-Петербург</span>
+                </span>
+              </span>
+            </a>
+          </li>
+        <li class="[border-bottom:1px_solid_#edf1f5]">
+            <a href="#event" class="card flex gap-[18px] [padding:18px_0] no-underline text-ink">
+              <span class="shrink-0 w-16 h-[68px] rounded-[10px] bg-navy text-white flex flex-col items-center justify-center">
+                <span class="text-[26px] font-bold leading-[1]">19</span>
+                <span class="text-[13px] font-medium text-[#cfdbe7] mt-1">ноя</span>
+              </span>
+              <span class="flex flex-col gap-[6px] min-w-0">
+                <span class="cardtitle text-[16px] font-semibold leading-[1.4]">Заседания постоянных комиссий МПА СНГ</span>
+                <span class="text-[14px] text-[#5a6472] flex items-center gap-[6px]">
+                  <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>
+                  <span>Таврический дворец, Санкт-Петербург</span>
+                </span>
+              </span>
+            </a>
+          </li>
       </ul>
-      <a href="#events" style="margin-top: auto; padding-top: 20px; font-size: 15px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; min-height: 44px">Все события <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></a>
+      <a href="#events" class="mt-[auto] pt-5 text-[15px] font-semibold no-underline inline-flex items-center gap-[6px] min-h-11">Все события <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></a>
     </div>
 
-    <div style="flex: 2 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
-      <div aria-roledescription="карусель" aria-label="Анонсы" style="position: relative; flex: 1 1 auto; min-height: 340px; display: grid; border-radius: 16px; overflow: hidden; color: #ffffff">
-        <sc-for list="{{ bannerList }}" as="b" hint-placeholder-count="3">
-          <a href="#banner" aria-hidden="{{ b.hidden }}" tabIndex="{{ b.tab }}" style="grid-area: 1 / 1; position: relative; z-index: {{ b.z }}; opacity: {{ b.op }}; visibility: {{ b.vis }}; transition: opacity 400ms ease, visibility 400ms; background: {{ b.bg }}; padding: 40px 44px 76px; display: flex; flex-direction: column; justify-content: flex-end; gap: 14px; color: #ffffff; text-decoration: none; overflow: hidden">
-            <span aria-hidden="true" style="position: absolute; right: 36px; top: 32px; font-size: 92px; font-weight: 700; line-height: 1; color: rgba(255,255,255,0.14); letter-spacing: -0.03em">{{ b.big }}</span>
-            <span style="position: relative; align-self: flex-start; flex-shrink: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 6px 10px; border-radius: 6px; background: rgba(255,255,255,0.16)">{{ b.kicker }}</span>
-            <span style="position: relative; font-size: 36px; font-weight: 700; line-height: 1.15; max-width: 640px">{{ b.title }}</span>
-            <span style="position: relative; font-size: 17px; line-height: 1.5; color: #e6eef6; max-width: 600px">{{ b.text }}</span>
-            <span style="position: relative; align-self: flex-start; flex-shrink: 0; white-space: nowrap; margin-top: 8px; height: 48px; min-height: 48px; padding: 0 22px; border-radius: 10px; background: #ffd200; color: #0a2540; font-size: 15px; font-weight: 700; display: inline-flex; align-items: center">{{ b.cta }}</span>
+    <div class="[flex:2_1_560px] min-w-0 flex flex-col gap-6">
+      <div data-carousel="banners" aria-roledescription="карусель" aria-label="Анонсы" class="relative [flex:1_1_auto] min-h-[340px] grid rounded-[16px] overflow-hidden text-white">
+        <a href="#banner" data-slide data-active aria-hidden="false" tabindex="0" class="[grid-area:1_/_1] relative [transition:opacity_400ms_ease,_visibility_400ms] [background:#5a1f6b] [padding:40px_44px_76px] flex flex-col [justify-content:flex-end] gap-[14px] text-white no-underline overflow-hidden">
+            <span aria-hidden="true" class="absolute right-9 top-8 text-[92px] font-bold leading-[1] text-[rgba(255,255,255,0.14)] tracking-[-0.03em]">28–30</span>
+            <span class="relative [align-self:flex-start] shrink-0 text-[13px] font-bold tracking-[0.06em] uppercase [padding:6px_10px] rounded-[6px] [background:rgba(255,255,255,0.16)]">Международный форум</span>
+            <span class="relative text-[36px] font-bold leading-[1.15] max-w-[640px]">Дни креативной экономики</span>
+            <span class="relative text-[17px] leading-[1.5] text-[#e6eef6] max-w-[600px]">28–30 октября 2026 года. Парламентарии, эксперты и представители креативных индустрий государств Содружества.</span>
+            <span class="relative [align-self:flex-start] shrink-0 whitespace-nowrap mt-2 h-12 min-h-12 [padding:0_22px] rounded-[10px] bg-gold text-navy text-[15px] font-bold inline-flex items-center">Программа форума</span>
           </a>
-        </sc-for>
-        <div style="position: absolute; z-index: 2; left: 44px; bottom: 26px; display: flex; gap: 8px; align-items: center">
-          <sc-for list="{{ dots }}" as="d" hint-placeholder-count="3">
-            <button type="button" aria-label="{{ d.label }}" aria-current="{{ d.active }}" onClick="{{ d.go }}" style="width: 28px; height: 28px; border: 0; padding: 0; background: none; cursor: pointer; display: flex; align-items: center; justify-content: center">
-              <span style="display: block; height: 4px; width: 24px; border-radius: 2px; background: {{ d.color }}"></span>
+        <a href="#banner" data-slide aria-hidden="true" tabindex="-1" class="[grid-area:1_/_1] relative [transition:opacity_400ms_ease,_visibility_400ms] [background:#0a5c8f] [padding:40px_44px_76px] flex flex-col [justify-content:flex-end] gap-[14px] text-white no-underline overflow-hidden">
+            <span aria-hidden="true" class="absolute right-9 top-8 text-[92px] font-bold leading-[1] text-[rgba(255,255,255,0.14)] tracking-[-0.03em]">МИМРД</span>
+            <span class="relative [align-self:flex-start] shrink-0 text-[13px] font-bold tracking-[0.06em] uppercase [padding:6px_10px] rounded-[6px] [background:rgba(255,255,255,0.16)]">Олимпиада</span>
+            <span class="relative text-[36px] font-bold leading-[1.15] max-w-[640px]">Избирательные системы стран мира</span>
+            <span class="relative text-[17px] leading-[1.5] text-[#e6eef6] max-w-[600px]">Олимпиада для студентов стран СНГ: подведены итоги, опубликованы списки победителей и призёров.</span>
+            <span class="relative [align-self:flex-start] shrink-0 whitespace-nowrap mt-2 h-12 min-h-12 [padding:0_22px] rounded-[10px] bg-gold text-navy text-[15px] font-bold inline-flex items-center">Итоги олимпиады</span>
+          </a>
+        <a href="#banner" data-slide aria-hidden="true" tabindex="-1" class="[grid-area:1_/_1] relative [transition:opacity_400ms_ease,_visibility_400ms] [background:#123a5e] [padding:40px_44px_76px] flex flex-col [justify-content:flex-end] gap-[14px] text-white no-underline overflow-hidden">
+            <span aria-hidden="true" class="absolute right-9 top-8 text-[92px] font-bold leading-[1] text-[rgba(255,255,255,0.14)] tracking-[-0.03em]">PRESS</span>
+            <span class="relative [align-self:flex-start] shrink-0 text-[13px] font-bold tracking-[0.06em] uppercase [padding:6px_10px] rounded-[6px] [background:rgba(255,255,255,0.16)]">Для СМИ</span>
+            <span class="relative text-[36px] font-bold leading-[1.15] max-w-[640px]">Аккредитация на мероприятия МПА СНГ</span>
+            <span class="relative text-[17px] leading-[1.5] text-[#e6eef6] max-w-[600px]">Открыта онлайн-аккредитация журналистов на заседания постоянных комиссий 19 ноября 2026 года.</span>
+            <span class="relative [align-self:flex-start] shrink-0 whitespace-nowrap mt-2 h-12 min-h-12 [padding:0_22px] rounded-[10px] bg-gold text-navy text-[15px] font-bold inline-flex items-center">Подать заявку</span>
+          </a>
+        <div class="absolute z-[2] left-11 bottom-[26px] flex gap-2 items-center">
+          <button type="button" aria-label="Баннер 1: Дни креативной экономики" aria-current="true" data-carousel-go="0" class="w-7 h-7 [border:0] p-0 bg-none cursor-pointer flex items-center justify-center">
+              <span class="block h-1 w-6 rounded-[2px] bg-gold"></span>
             </button>
-          </sc-for>
+          <button type="button" aria-label="Баннер 2: Избирательные системы стран мира" aria-current="false" data-carousel-go="1" class="w-7 h-7 [border:0] p-0 bg-none cursor-pointer flex items-center justify-center">
+              <span class="block h-1 w-6 rounded-[2px] [background:rgba(255,255,255,0.45)]"></span>
+            </button>
+          <button type="button" aria-label="Баннер 3: Аккредитация на мероприятия МПА СНГ" aria-current="false" data-carousel-go="2" class="w-7 h-7 [border:0] p-0 bg-none cursor-pointer flex items-center justify-center">
+              <span class="block h-1 w-6 rounded-[2px] [background:rgba(255,255,255,0.45)]"></span>
+            </button>
         </div>
-        <div style="position: absolute; z-index: 2; right: 24px; bottom: 18px; display: flex; gap: 8px">
-          <button type="button" aria-label="Предыдущий баннер" onClick="{{ prevBanner }}" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.5); background: transparent; color: #ffffff; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"></path></svg></button>
-          <button type="button" aria-label="Следующий баннер" onClick="{{ nextBanner }}" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.5); background: transparent; color: #ffffff; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button>
+        <div class="absolute z-[2] right-6 bottom-[18px] flex gap-2">
+          <button type="button" aria-label="Предыдущий баннер" data-carousel-step="-1" class="w-11 h-11 rounded-full [border:1px_solid_rgba(255,255,255,0.5)] bg-transparent text-white cursor-pointer flex items-center justify-center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"></path></svg></button>
+          <button type="button" aria-label="Следующий баннер" data-carousel-step="1" class="w-11 h-11 rounded-full [border:1px_solid_rgba(255,255,255,0.5)] bg-transparent text-white cursor-pointer flex items-center justify-center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button>
         </div>
       </div>
 
-      <div style="display: flex; flex-wrap: wrap; gap: 24px">
-        <a href="#year" style="position: relative; overflow: hidden; flex: 1 1 260px; min-width: 0; height: 100px; border-radius: 12px; background: #e4f3f5; border: 1px solid #cfe7eb; display: flex; align-items: center; gap: 14px; padding: 0 18px; text-decoration: none; color: #10202f">
-          <span aria-hidden="true" style="position: absolute; right: -40px; top: -70px; width: 200px; height: 200px; border-radius: 50%; background: #cfeaee"></span>
-          <span aria-hidden="true" style="position: absolute; right: 70px; bottom: -46px; width: 96px; height: 96px; border-radius: 50%; border: 2px solid #b3dde3"></span>
-          <span aria-hidden="true" style="position: absolute; right: 34px; top: 20px; width: 36px; height: 36px">
-            <span style="position: absolute; left: 12px; top: 0; width: 12px; height: 36px; border-radius: 3px; background: #ffffff"></span>
-            <span style="position: absolute; left: 0; top: 12px; width: 36px; height: 12px; border-radius: 3px; background: #ffffff"></span>
+      <div class="flex flex-wrap gap-6">
+        <a href="#year" class="relative overflow-hidden [flex:1_1_260px] min-w-0 h-[100px] rounded-[12px] [background:#e4f3f5] [border:1px_solid_#cfe7eb] flex items-center gap-[14px] [padding:0_18px] no-underline text-ink">
+          <span aria-hidden="true" class="absolute right-[-40px] top-[-70px] w-[200px] h-[200px] rounded-full [background:#cfeaee]"></span>
+          <span aria-hidden="true" class="absolute right-[70px] bottom-[-46px] w-24 h-24 rounded-full [border:2px_solid_#b3dde3]"></span>
+          <span aria-hidden="true" class="absolute right-[34px] top-5 w-9 h-9">
+            <span class="absolute left-3 top-0 w-3 h-9 rounded-[3px] bg-white"></span>
+            <span class="absolute left-0 top-3 w-9 h-3 rounded-[3px] bg-white"></span>
           </span>
-          <svg aria-hidden="true" viewBox="0 0 240 40" preserveAspectRatio="none" style="position: absolute; right: 0; bottom: 14px; width: 55%; height: 34px"><path d="M0 26h70l8-14 10 26 12-34 9 22h131" fill="none" stroke="#7fc6d1" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path></svg>
-          <img src="./assets/ea5cd78d4ec43cd43285107dabe56045.svg" alt="" style="position: relative; width: 52px; height: 52px; flex-shrink: 0">
-          <span style="position: relative; display: flex; flex-direction: column; gap: 2px">
-            <span style="font-size: 13px; font-weight: 600; color: #0068a6">2026 год в СНГ</span>
-            <span style="font-size: 16px; font-weight: 700; line-height: 1.25">Год охраны здоровья</span>
+          <svg aria-hidden="true" viewBox="0 0 240 40" preserveAspectRatio="none" class="absolute right-0 bottom-[14px] w-[55%] h-[34px]"><path d="M0 26h70l8-14 10 26 12-34 9 22h131" fill="none" stroke="#7fc6d1" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path></svg>
+          <img src="./assets/ea5cd78d4ec43cd43285107dabe56045.svg" alt="" class="relative w-[52px] h-[52px] shrink-0">
+          <span class="relative flex flex-col gap-[2px]">
+            <span class="text-[13px] font-semibold text-accent">2026 год в СНГ</span>
+            <span class="text-[16px] font-bold leading-[1.25]">Год охраны здоровья</span>
           </span>
         </a>
-        <a href="#chair" style="position: relative; overflow: hidden; flex: 1 1 260px; min-width: 0; height: 100px; border-radius: 12px; background: #e9f3eb; border: 1px solid #d3e6d7; display: flex; align-items: center; gap: 14px; padding: 0 18px; text-decoration: none; color: #10202f">
-          <span aria-hidden="true" style="position: absolute; right: -30px; top: -40px; width: 150px; height: 150px; background: #d4eadb"></span>
-          <span aria-hidden="true" style="position: absolute; right: -30px; top: -40px; width: 150px; height: 150px; background: #d4eadb; transform: rotate(45deg)"></span>
-          <span aria-hidden="true" style="position: absolute; right: 120px; bottom: -34px; width: 64px; height: 64px; border: 2px solid #e2c368; transform: rotate(22deg)"></span>
-          <span aria-hidden="true" style="position: absolute; right: 120px; bottom: -34px; width: 64px; height: 64px; border: 2px solid #e2c368; transform: rotate(67deg)"></span>
-          <span aria-hidden="true" style="position: absolute; right: 22px; top: 30px; width: 40px; height: 40px; border-radius: 50%; border: 2px solid #ffffff"></span>
-          <span aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: #00843d"></span>
-          <img src="./assets/a84d0dd30761375e9d7f698bd18a597c.png" alt="" style="position: relative; width: 60px; height: 60px; flex-shrink: 0; object-fit: contain">
-          <span style="position: relative; display: flex; flex-direction: column; gap: 2px">
-            <span style="font-size: 13px; font-weight: 600; color: #0b6b37">Председательство в СНГ</span>
-            <span style="font-size: 16px; font-weight: 700; line-height: 1.25">Туркменистан, 2026</span>
+        <a href="#chair" class="relative overflow-hidden [flex:1_1_260px] min-w-0 h-[100px] rounded-[12px] [background:#e9f3eb] [border:1px_solid_#d3e6d7] flex items-center gap-[14px] [padding:0_18px] no-underline text-ink">
+          <span aria-hidden="true" class="absolute right-[-30px] top-[-40px] w-[150px] h-[150px] [background:#d4eadb]"></span>
+          <span aria-hidden="true" class="absolute right-[-30px] top-[-40px] w-[150px] h-[150px] [background:#d4eadb] [transform:rotate(45deg)]"></span>
+          <span aria-hidden="true" class="absolute right-[120px] bottom-[-34px] w-16 h-16 [border:2px_solid_#e2c368] [transform:rotate(22deg)]"></span>
+          <span aria-hidden="true" class="absolute right-[120px] bottom-[-34px] w-16 h-16 [border:2px_solid_#e2c368] [transform:rotate(67deg)]"></span>
+          <span aria-hidden="true" class="absolute right-[22px] top-[30px] w-10 h-10 rounded-full [border:2px_solid_#ffffff]"></span>
+          <span aria-hidden="true" class="absolute left-0 right-0 bottom-0 h-1 [background:#00843d]"></span>
+          <img src="./assets/a84d0dd30761375e9d7f698bd18a597c.png" alt="" class="relative w-[60px] h-[60px] shrink-0 object-contain">
+          <span class="relative flex flex-col gap-[2px]">
+            <span class="text-[13px] font-semibold text-[#0b6b37]">Председательство в СНГ</span>
+            <span class="text-[16px] font-bold leading-[1.25]">Туркменистан, 2026</span>
           </span>
         </a>
       </div>
@@ -395,357 +562,281 @@ button{font:inherit}
 </section>
 
 <!-- ============ NUMBERS ============ -->
-<section class="sec" aria-labelledby="num-h" style="padding: 88px 0; background: #0a2540; color: #ffffff">
-  <div ref="{{ setStatsEl }}" class="wrap" style="width: 100%; padding: 0 48px">
-    <h2 id="num-h" class="h2" style="margin: 0 0 44px; font-size: 36px; line-height: 1.15; font-weight: 700; letter-spacing: -0.01em">МПА СНГ в цифрах</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0">
-      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
-        <div style="padding: 8px 28px 8px 0; border-top: 2px solid #ffd200; padding-top: 24px; margin-right: 24px">
-          <p style="margin: 0; font-size: 64px; font-weight: 700; line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums">{{ s.shown }}</p>
-          <p style="margin: 14px 0 0; font-size: 17px; line-height: 1.4; color: #e3ecf5">{{ s.label }}</p>
-          <p style="margin: 10px 0 0; font-size: 13px; color: #a9bdd1">{{ s.asof }}</p>
+<section class="sec [padding:88px_0] bg-navy text-white" aria-labelledby="num-h">
+  <div data-stats class="wrap w-full [padding:0_48px]">
+    <h2 id="num-h" class="h2 [margin:0_0_44px] text-[36px] leading-[1.15] font-bold tracking-[-0.01em]">МПА СНГ в цифрах</h2>
+    <div class="grid [grid-template-columns:repeat(auto-fit,_minmax(240px,_1fr))] gap-0">
+      <div class="pr-7 pb-2 pl-0 [border-top:2px_solid_#ffd200] pt-6 mr-6">
+          <p class="m-0 text-[64px] font-bold leading-[1] tracking-[-0.02em] tabular-nums"><span data-counter="600">600</span>+</p>
+          <p class="[margin:14px_0_0] text-[17px] leading-[1.4] text-[#e3ecf5]">принятых модельных документов</p>
+          <p class="[margin:10px_0_0] text-[13px] text-[#a9bdd1]">по состоянию на 01.07.2026</p>
         </div>
-      </sc-for>
+      <div class="pr-7 pb-2 pl-0 [border-top:2px_solid_#ffd200] pt-6 mr-6">
+          <p class="m-0 text-[64px] font-bold leading-[1] tracking-[-0.02em] tabular-nums"><span data-counter="9">9</span></p>
+          <p class="[margin:14px_0_0] text-[17px] leading-[1.4] text-[#e3ecf5]">парламентских делегаций</p>
+          <p class="[margin:10px_0_0] text-[13px] text-[#a9bdd1]">по состоянию на 01.07.2026</p>
+        </div>
+      <div class="pr-7 pb-2 pl-0 [border-top:2px_solid_#ffd200] pt-6 mr-6">
+          <p class="m-0 text-[64px] font-bold leading-[1] tracking-[-0.02em] tabular-nums"><span data-counter="350">350</span>+</p>
+          <p class="[margin:14px_0_0] text-[17px] leading-[1.4] text-[#e3ecf5]">наблюдательных миссий</p>
+          <p class="[margin:10px_0_0] text-[13px] text-[#a9bdd1]">по состоянию на 01.07.2026</p>
+        </div>
+      <div class="pr-7 pb-2 pl-0 [border-top:2px_solid_#ffd200] pt-6 mr-6">
+          <p class="m-0 text-[64px] font-bold leading-[1] tracking-[-0.02em] tabular-nums"><span data-counter="40">40</span>+</p>
+          <p class="[margin:14px_0_0] text-[17px] leading-[1.4] text-[#e3ecf5]">партнёрских организаций</p>
+          <p class="[margin:10px_0_0] text-[13px] text-[#a9bdd1]">по состоянию на 01.07.2026</p>
+        </div>
     </div>
   </div>
 </section>
 
 <!-- ============ DOCUMENTS ============ -->
-<section class="sec" aria-labelledby="doc-h" style="padding: 96px 0; background: #f3f6f9">
-  <div class="wrap" style="width: 100%; padding: 0 48px">
-    <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 28px">
+<section class="sec [padding:96px_0] [background:#f3f6f9]" id="documents" aria-labelledby="doc-h">
+  <div class="wrap w-full [padding:0_48px]">
+    <div class="flex items-end justify-between gap-4 flex-wrap mb-7">
       <div>
-        <p style="margin: 0 0 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #0a3f73">Электронный реестр</p>
-        <h2 id="doc-h" class="h2" style="margin: 0; font-size: 36px; line-height: 1.15; font-weight: 700; letter-spacing: -0.01em">База модельного законодательства и документов</h2>
+        <p class="[margin:0_0_10px] text-[13px] font-bold tracking-[0.06em] uppercase text-[#0a3f73]">Электронный реестр</p>
+        <h2 id="doc-h" class="h2 m-0 text-[36px] leading-[1.15] font-bold tracking-[-0.01em]">База модельного законодательства и документов</h2>
       </div>
-      <a href="#depository" style="font-size: 15px; font-weight: 600; color: #0a3f73; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; min-height: 44px">Перейти в полный депозитарий <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"></path><path d="M20 4 11 13"></path><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"></path></svg></a>
+      <a href="#depository" class="text-[15px] font-semibold text-[#0a3f73] no-underline inline-flex items-center gap-2 min-h-11">Перейти в полный депозитарий <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"></path><path d="M20 4 11 13"></path><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"></path></svg></a>
     </div>
 
-    <form onSubmit="{{ noSubmit }}" style="background: #ffffff; border-radius: 12px; box-shadow: 0 1px 3px rgba(16,32,47,0.06); padding: 24px; display: flex; flex-direction: column; gap: 18px">
-      <div style="display: flex; flex-wrap: wrap; gap: 16px">
-        <label for="dq" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Поиск по базе документов</label>
-        <div style="flex: 1 1 420px; min-width: 0; height: 52px; display: flex; align-items: center; gap: 12px; background: #f0f2f7; border-radius: 6px; padding: 0 16px">
+    <form id="document-search-form" role="search" class="bg-white rounded-[12px] [box-shadow:0_1px_3px_rgba(16,32,47,0.06)] [padding:24px] flex flex-col gap-[18px]">
+      <div class="flex flex-wrap gap-4">
+        <label for="dq" class="absolute w-[1px] h-[1px] overflow-hidden [clip:rect(0_0_0_0)]">Поиск по базе документов</label>
+        <div class="[flex:1_1_420px] min-w-0 h-[52px] flex items-center gap-3 [background:#f0f2f7] rounded-[6px] [padding:0_16px]">
           <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a5866" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg>
-          <input id="dq" type="search" placeholder="Поиск по каталогу модельных законов, кодексов и актов…" style="flex: 1; min-width: 0; border: 0; outline: none; background: transparent; font: inherit; font-size: 16px; color: #10202f">
+          <input id="dq" type="search" placeholder="Поиск по каталогу модельных законов, кодексов и актов…" class="[flex:1] min-w-0 [border:0] [outline:none] bg-transparent text-[16px] text-ink">
         </div>
-        <label style="flex: 0 1 200px; min-width: 160px; position: relative">
-          <span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Статус</span>
-          <select style="width: 100%; height: 52px; border: 0; border-radius: 6px; padding: 0 14px; background: #f0f2f7; font: inherit; font-size: 14px; font-weight: 500; color: #10202f"><option>Все статусы</option><option>Принят</option><option>Рекомендация</option><option>Новая редакция</option><option>В разработке</option></select>
+        <label class="[flex:0_1_200px] min-w-[160px] relative">
+          <span class="absolute w-[1px] h-[1px] overflow-hidden [clip:rect(0_0_0_0)]">Статус</span>
+          <select name="status" class="w-full h-[52px] [border:0] rounded-[6px] [padding:0_14px] [background:#f0f2f7] text-[14px] font-medium text-ink"><option value="">Все статусы</option><option>Принят</option><option>Рекомендация</option><option>Новая редакция</option><option>В разработке</option></select>
         </label>
-        <label style="flex: 0 1 230px; min-width: 180px; position: relative">
-          <span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Отрасль права</span>
-          <select style="width: 100%; height: 52px; border: 0; border-radius: 6px; padding: 0 14px; background: #f0f2f7; font: inherit; font-size: 14px; font-weight: 500; color: #10202f"><option>Все отрасли права</option><option>Конституционное право</option><option>Экология и безопасность</option><option>Цифровая экономика</option><option>Социальная сфера</option></select>
+        <label class="[flex:0_1_230px] min-w-[180px] relative">
+          <span class="absolute w-[1px] h-[1px] overflow-hidden [clip:rect(0_0_0_0)]">Отрасль права</span>
+          <select name="field" class="w-full h-[52px] [border:0] rounded-[6px] [padding:0_14px] [background:#f0f2f7] text-[14px] font-medium text-ink"><option value="">Все отрасли права</option><option>Конституционное право</option><option>Экология и безопасность</option><option>Цифровая экономика</option><option>Социальная сфера</option></select>
         </label>
-        <button type="submit" style="height: 52px; padding: 0 28px; border: 0; border-radius: 6px; background: #0A3F73; color: #ffffff; font-size: 16px; font-weight: 700; cursor: pointer">Найти</button>
+        <button type="submit" class="h-[52px] [padding:0_28px] [border:0] rounded-[6px] [background:#0A3F73] text-white text-[16px] font-bold cursor-pointer">Найти</button>
       </div>
-      <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
-        <span style="font-size: 13px; font-weight: 500; color: #4a5866; margin-right: 4px">Популярные категории:</span>
-        <sc-for list="{{ tags }}" as="t" hint-placeholder-count="6">
-          <a href="#tag" class="tag" style="height: 32px; padding: 0 14px; border-radius: 16px; background: #e6e9f0; border: 1px solid #e6e9f0; color: #10202f; font-size: 13px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center">{{ t }}</a>
-        </sc-for>
+      <div class="flex flex-wrap gap-2 items-center">
+        <span class="text-[13px] font-medium text-[#4a5866] mr-1">Популярные категории:</span>
+        <button type="button" aria-pressed="false" class="tag cursor-pointer h-8 [padding:0_14px] rounded-[16px] [background:#e6e9f0] [border:1px_solid_#e6e9f0] text-ink text-[13px] font-semibold no-underline inline-flex items-center">Регламенты</button>
+        <button type="button" aria-pressed="false" class="tag cursor-pointer h-8 [padding:0_14px] rounded-[16px] [background:#e6e9f0] [border:1px_solid_#e6e9f0] text-ink text-[13px] font-semibold no-underline inline-flex items-center">Модельные кодексы</button>
+        <button type="button" aria-pressed="false" class="tag cursor-pointer h-8 [padding:0_14px] rounded-[16px] [background:#e6e9f0] [border:1px_solid_#e6e9f0] text-ink text-[13px] font-semibold no-underline inline-flex items-center">Словари и глоссарии</button>
+        <button type="button" aria-pressed="false" class="tag cursor-pointer h-8 [padding:0_14px] rounded-[16px] [background:#e6e9f0] [border:1px_solid_#e6e9f0] text-ink text-[13px] font-semibold no-underline inline-flex items-center">Рекомендации</button>
+        <button type="button" aria-pressed="false" class="tag cursor-pointer h-8 [padding:0_14px] rounded-[16px] [background:#e6e9f0] [border:1px_solid_#e6e9f0] text-ink text-[13px] font-semibold no-underline inline-flex items-center">Экология и безопасность</button>
+        <button type="button" aria-pressed="false" class="tag cursor-pointer h-8 [padding:0_14px] rounded-[16px] [background:#e6e9f0] [border:1px_solid_#e6e9f0] text-ink text-[13px] font-semibold no-underline inline-flex items-center">Цифровая экономика</button>
       </div>
     </form>
 
-    <div style="margin-top: 24px; background: #ffffff; border-radius: 12px; box-shadow: 0 1px 3px rgba(16,32,47,0.06); overflow: hidden">
-      <div style="background: #eef0f5; padding: 0 24px; min-height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap">
-        <h3 style="margin: 0; font-size: 19px; font-weight: 600; color: #10202f">Последние принятые акты</h3>
-        <span style="font-size: 13px; font-weight: 500; color: #4a5866">Показано 5 из 614 актов</span>
+    <div class="mt-6 bg-white rounded-[12px] [box-shadow:0_1px_3px_rgba(16,32,47,0.06)] overflow-hidden">
+      <div class="[background:#eef0f5] [padding:0_24px] min-h-16 flex items-center justify-between gap-3 flex-wrap">
+        <h3 class="m-0 text-[19px] font-semibold text-ink">Последние принятые акты</h3>
+        <span id="document-count" role="status" class="text-[13px] font-medium text-[#4a5866]">Показано 5 из 5 актов на странице</span>
       </div>
-      <ul style="list-style: none; margin: 0; padding: 0">
-        <sc-for list="{{ docs }}" as="d" hint-placeholder-count="5">
-          <li style="background: {{ d.rowBg }}; padding: 24px; display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap">
-            <span aria-hidden="true" style="width: 40px; height: 40px; flex-shrink: 0; border-radius: 4px; background: #cfe4f7; color: #0a3f73; display: flex; align-items: center; justify-content: center">
+      <ul class="list-none m-0 p-0">
+        <li data-document id="document-1" data-status="Принят" data-field="Цифровая экономика" data-category="" class="bg-white [padding:24px] flex gap-4 items-start flex-wrap">
+            <span aria-hidden="true" class="w-10 h-10 shrink-0 rounded-[4px] [background:#cfe4f7] text-[#0a3f73] flex items-center justify-center">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="M9 13h6"></path><path d="M9 17h6"></path></svg>
             </span>
-            <div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
-              <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
-                <span style="font-size: 12px; font-weight: 700; padding: 3px 8px; border-radius: 3px; background: #e6e9f0; color: #33475b">№ {{ d.num }}</span>
-                <span style="font-size: 12px; font-weight: 700; padding: 3px 8px; border-radius: 3px; background: {{ d.badgeBg }}; color: {{ d.badgeC }}">{{ d.status }}</span>
-                <span style="font-size: 14px; color: #4a5866">{{ d.meeting }}</span>
+            <div class="[flex:1_1_480px] min-w-0 flex flex-col gap-[6px]">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="text-[12px] font-bold [padding:3px_8px] rounded-[3px] [background:#e6e9f0] text-[#33475b]">№ 58-12</span>
+                <span class="text-[12px] font-bold [padding:3px_8px] rounded-[3px] [background:#e3f6ea] text-[#13703a]">Принят</span>
+                <span class="text-[14px] text-[#4a5866]">Пленарное заседание от 14.05.2026 г.</span>
               </div>
-              <a href="#doc" class="cardlink" style="font-size: 20px; font-weight: 500; line-height: 1.35; color: #10202f; text-decoration: none">{{ d.title }}</a>
-              <span style="font-size: 14px; line-height: 1.5; color: #4a5866">{{ d.desc }}</span>
+              <a href="#doc" class="cardlink text-[20px] font-medium leading-[1.35] text-ink no-underline">Модельный закон «О правовом регулировании систем искусственного интеллекта»</a>
+              <span class="text-[14px] leading-[1.5] text-[#4a5866]">Устанавливает этические стандарты, рамки ответственности и принципы прозрачности машинного обучения.</span>
             </div>
-            <div style="display: flex; align-items: center; gap: 8px; align-self: center">
-              <a href="#pdf" style="height: 32px; padding: 0 12px; border-radius: 4px; background: #eef0f5; color: #0a3f73; font-size: 13px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; min-width: 44px">
+            <div class="flex items-center gap-2 [align-self:center]">
+              <a href="#pdf" class="h-8 [padding:0_12px] rounded-[4px] [background:#eef0f5] text-[#0a3f73] text-[13px] font-bold no-underline inline-flex items-center gap-2 min-w-11">
                 <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="7" y="3" width="14" height="14" rx="2"></rect><path d="M3 7v12a2 2 0 0 0 2 2h12"></path><path d="M10 12V8h1.5a1.5 1.5 0 0 1 0 3H10"></path></svg>
-                PDF ({{ d.size }})
+                PDF (1.2 MB)
               </a>
-              <a href="#view" aria-label="{{ d.viewLabel }}" style="width: 44px; height: 44px; border-radius: 6px; color: #33475b; display: inline-flex; align-items: center; justify-content: center">
+              <a href="#view" aria-label="Просмотреть: Модельный закон «О правовом регулировании систем искусственного интеллекта»" class="w-11 h-11 rounded-[6px] text-[#33475b] inline-flex items-center justify-center">
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
               </a>
             </div>
           </li>
-        </sc-for>
+        <li data-document id="document-2" data-status="Принят" data-field="Экология и безопасность" data-category="Модельные кодексы" class="[background:#fafbfd] [padding:24px] flex gap-4 items-start flex-wrap">
+            <span aria-hidden="true" class="w-10 h-10 shrink-0 rounded-[4px] [background:#cfe4f7] text-[#0a3f73] flex items-center justify-center">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="M9 13h6"></path><path d="M9 17h6"></path></svg>
+            </span>
+            <div class="[flex:1_1_480px] min-w-0 flex flex-col gap-[6px]">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="text-[12px] font-bold [padding:3px_8px] rounded-[3px] [background:#e6e9f0] text-[#33475b]">№ 58-11</span>
+                <span class="text-[12px] font-bold [padding:3px_8px] rounded-[3px] [background:#e3f6ea] text-[#13703a]">Принят</span>
+                <span class="text-[14px] text-[#4a5866]">Пленарное заседание от 14.05.2026 г.</span>
+              </div>
+              <a href="#doc" class="cardlink text-[20px] font-medium leading-[1.35] text-ink no-underline">Модельный экологический кодекс государств — участников СНГ (новая редакция)</a>
+              <span class="text-[14px] leading-[1.5] text-[#4a5866]">Базовый унифицированный свод принципов охраны трансграничных водных бассейнов и биоразнообразия.</span>
+            </div>
+            <div class="flex items-center gap-2 [align-self:center]">
+              <a href="#pdf" class="h-8 [padding:0_12px] rounded-[4px] [background:#eef0f5] text-[#0a3f73] text-[13px] font-bold no-underline inline-flex items-center gap-2 min-w-11">
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="7" y="3" width="14" height="14" rx="2"></rect><path d="M3 7v12a2 2 0 0 0 2 2h12"></path><path d="M10 12V8h1.5a1.5 1.5 0 0 1 0 3H10"></path></svg>
+                PDF (2.8 MB)
+              </a>
+              <a href="#view" aria-label="Просмотреть: Модельный экологический кодекс государств — участников СНГ (новая редакция)" class="w-11 h-11 rounded-[6px] text-[#33475b] inline-flex items-center justify-center">
+                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              </a>
+            </div>
+          </li>
+        <li data-document id="document-3" data-status="Рекомендация" data-field="" data-category="Рекомендации" class="bg-white [padding:24px] flex gap-4 items-start flex-wrap">
+            <span aria-hidden="true" class="w-10 h-10 shrink-0 rounded-[4px] [background:#cfe4f7] text-[#0a3f73] flex items-center justify-center">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="M9 13h6"></path><path d="M9 17h6"></path></svg>
+            </span>
+            <div class="[flex:1_1_480px] min-w-0 flex flex-col gap-[6px]">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="text-[12px] font-bold [padding:3px_8px] rounded-[3px] [background:#e6e9f0] text-[#33475b]">№ 58-9</span>
+                <span class="text-[12px] font-bold [padding:3px_8px] rounded-[3px] [background:#e6edfb] text-[#2346a8]">Рекомендация</span>
+                <span class="text-[14px] text-[#4a5866]">Пленарное заседание от 14.05.2026 г.</span>
+              </div>
+              <a href="#doc" class="cardlink text-[20px] font-medium leading-[1.35] text-ink no-underline">Рекомендации по гармонизации законодательства в сфере трансграничного туризма</a>
+              <span class="text-[14px] leading-[1.5] text-[#4a5866]">Единые регламенты визового содействия и сертификации межгосударственных туристических маршрутов.</span>
+            </div>
+            <div class="flex items-center gap-2 [align-self:center]">
+              <a href="#pdf" class="h-8 [padding:0_12px] rounded-[4px] [background:#eef0f5] text-[#0a3f73] text-[13px] font-bold no-underline inline-flex items-center gap-2 min-w-11">
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="7" y="3" width="14" height="14" rx="2"></rect><path d="M3 7v12a2 2 0 0 0 2 2h12"></path><path d="M10 12V8h1.5a1.5 1.5 0 0 1 0 3H10"></path></svg>
+                PDF (840 KB)
+              </a>
+              <a href="#view" aria-label="Просмотреть: Рекомендации по гармонизации законодательства в сфере трансграничного туризма" class="w-11 h-11 rounded-[6px] text-[#33475b] inline-flex items-center justify-center">
+                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              </a>
+            </div>
+          </li>
+        <li data-document id="document-4" data-status="Принят" data-field="Цифровая экономика" data-category="Словари и глоссарии" class="[background:#fafbfd] [padding:24px] flex gap-4 items-start flex-wrap">
+            <span aria-hidden="true" class="w-10 h-10 shrink-0 rounded-[4px] [background:#cfe4f7] text-[#0a3f73] flex items-center justify-center">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="M9 13h6"></path><path d="M9 17h6"></path></svg>
+            </span>
+            <div class="[flex:1_1_480px] min-w-0 flex flex-col gap-[6px]">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="text-[12px] font-bold [padding:3px_8px] rounded-[3px] [background:#e6e9f0] text-[#33475b]">№ 57-14</span>
+                <span class="text-[12px] font-bold [padding:3px_8px] rounded-[3px] [background:#e3f6ea] text-[#13703a]">Принят</span>
+                <span class="text-[14px] text-[#4a5866]">Пленарное заседание от 17.11.2025 г.</span>
+              </div>
+              <a href="#doc" class="cardlink text-[20px] font-medium leading-[1.35] text-ink no-underline">Глоссарий терминов в сфере цифровой идентификации и кибербезопасности</a>
+              <span class="text-[14px] leading-[1.5] text-[#4a5866]">Унифицированный межъязыковой справочник юридических дефиниций и протоколов верификации.</span>
+            </div>
+            <div class="flex items-center gap-2 [align-self:center]">
+              <a href="#pdf" class="h-8 [padding:0_12px] rounded-[4px] [background:#eef0f5] text-[#0a3f73] text-[13px] font-bold no-underline inline-flex items-center gap-2 min-w-11">
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="7" y="3" width="14" height="14" rx="2"></rect><path d="M3 7v12a2 2 0 0 0 2 2h12"></path><path d="M10 12V8h1.5a1.5 1.5 0 0 1 0 3H10"></path></svg>
+                PDF (1.5 MB)
+              </a>
+              <a href="#view" aria-label="Просмотреть: Глоссарий терминов в сфере цифровой идентификации и кибербезопасности" class="w-11 h-11 rounded-[6px] text-[#33475b] inline-flex items-center justify-center">
+                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              </a>
+            </div>
+          </li>
+        <li data-document id="document-5" data-status="Принят" data-field="Цифровая экономика" data-category="" class="bg-white [padding:24px] flex gap-4 items-start flex-wrap">
+            <span aria-hidden="true" class="w-10 h-10 shrink-0 rounded-[4px] [background:#cfe4f7] text-[#0a3f73] flex items-center justify-center">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="M9 13h6"></path><path d="M9 17h6"></path></svg>
+            </span>
+            <div class="[flex:1_1_480px] min-w-0 flex flex-col gap-[6px]">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="text-[12px] font-bold [padding:3px_8px] rounded-[3px] [background:#e6e9f0] text-[#33475b]">№ 57-08</span>
+                <span class="text-[12px] font-bold [padding:3px_8px] rounded-[3px] [background:#e3f6ea] text-[#13703a]">Принят</span>
+                <span class="text-[14px] text-[#4a5866]">Пленарное заседание от 17.11.2025 г.</span>
+              </div>
+              <a href="#doc" class="cardlink text-[20px] font-medium leading-[1.35] text-ink no-underline">Модельный закон «О противодействии использованию криптовалют в незаконных целях»</a>
+              <span class="text-[14px] leading-[1.5] text-[#4a5866]">Механизмы финансового мониторинга транзакций цифровых активов и межгосударственного правоприменения.</span>
+            </div>
+            <div class="flex items-center gap-2 [align-self:center]">
+              <a href="#pdf" class="h-8 [padding:0_12px] rounded-[4px] [background:#eef0f5] text-[#0a3f73] text-[13px] font-bold no-underline inline-flex items-center gap-2 min-w-11">
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="7" y="3" width="14" height="14" rx="2"></rect><path d="M3 7v12a2 2 0 0 0 2 2h12"></path><path d="M10 12V8h1.5a1.5 1.5 0 0 1 0 3H10"></path></svg>
+                PDF (980 KB)
+              </a>
+              <a href="#view" aria-label="Просмотреть: Модельный закон «О противодействии использованию криптовалют в незаконных целях»" class="w-11 h-11 rounded-[6px] text-[#33475b] inline-flex items-center justify-center">
+                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              </a>
+            </div>
+          </li>
       </ul>
     </div>
   </div>
 </section>
 
 <!-- ============ PROJECTS ============ -->
-<section class="sec" aria-labelledby="pr-h" style="position: relative; overflow: hidden; padding: 96px 0; background: #ffffff; color: #10202f">
-  <div class="wrap" style="position: relative; width: 100%; padding: 0 48px">
-    <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 36px">
-      <h2 id="pr-h" class="h2" style="margin: 0; font-size: 36px; line-height: 1.15; font-weight: 700; letter-spacing: -0.01em; color: #10202f">Проекты</h2>
-      <a href="#projects" style="font-size: 15px; font-weight: 600; color: #0a3f73; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; min-height: 44px">Все проекты <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"></path><path d="M20 4 11 13"></path><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"></path></svg></a>
+<section class="sec relative overflow-hidden [padding:96px_0] bg-white text-ink" id="projects" aria-labelledby="pr-h">
+  <div class="wrap relative w-full [padding:0_48px]">
+    <div class="flex items-baseline justify-between gap-4 flex-wrap mb-9">
+      <h2 id="pr-h" class="h2 m-0 text-[36px] leading-[1.15] font-bold tracking-[-0.01em] text-ink">Проекты</h2>
+      <a href="#projects" class="text-[15px] font-semibold text-[#0a3f73] no-underline inline-flex items-center gap-2 min-h-11">Все проекты <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"></path><path d="M20 4 11 13"></path><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"></path></svg></a>
     </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px">
-      <sc-for list="{{ projects }}" as="p" hint-placeholder-count="4">
-        <a href="#project" class="prcard" style="position: relative; overflow: hidden; display: flex; flex-direction: column; background: {{ p.bg }}; border-radius: 16px; padding: 16px 16px 28px; text-decoration: none; color: #10202f; border: 1px solid #dde5ec; transition: transform 200ms ease">
-          <span aria-hidden="true" style="position: absolute; left: -120px; bottom: -180px; width: 420px; height: 420px; border-radius: 50%; background: rgba(10,63,115,0.05)"></span>
-          <span aria-hidden="true" style="position: absolute; right: -160px; top: 120px; width: 380px; height: 200px; border-radius: 100px; background: {{ p.shape }}; transform: rotate(-24deg)"></span>
-          <img src="{{ p.img }}" alt="" style="position: relative; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; border-radius: 10px; background: #ffffff">
-          <span style="position: relative; padding: 24px 8px 0; display: flex; flex-direction: column; gap: 14px; flex: 1">
-            <span style="font-size: 22px; font-weight: 700; line-height: 1.3; letter-spacing: -0.005em">{{ p.title }}</span>
-            <span style="font-size: 15px; line-height: 1.55; color: #4a5866">{{ p.text }}</span>
+    <div class="grid [grid-template-columns:repeat(auto-fit,_minmax(260px,_1fr))] gap-6">
+      <a href="#project" class="prcard relative overflow-hidden flex flex-col [background:#eef4f9] rounded-[16px] [padding:16px_16px_28px] no-underline text-ink [border:1px_solid_#dde5ec] [transition:transform_200ms_ease]">
+          <span aria-hidden="true" class="absolute left-[-120px] bottom-[-180px] w-[420px] h-[420px] rounded-full [background:rgba(10,63,115,0.05)]"></span>
+          <span aria-hidden="true" class="absolute right-[-160px] top-[120px] w-[380px] h-[200px] rounded-[100px] [background:rgba(0,104,166,0.10)] [transform:rotate(-24deg)]"></span>
+          <img src="./assets/b263eaedf3460a8536a2c79a031146f5.jpg" alt="" class="relative w-full [aspect-ratio:16_/_10] object-cover block rounded-[10px] bg-white">
+          <span class="relative [padding:24px_8px_0] flex flex-col gap-[14px] [flex:1]">
+            <span class="text-[22px] font-bold leading-[1.3] tracking-[-0.005em]">Журнал «Диалог: политика, право, экономика»</span>
+            <span class="text-[15px] leading-[1.55] text-[#4a5866]">Научно-аналитический журнал Ассамблеи о праве, политике и экономике Содружества.</span>
           </span>
         </a>
-      </sc-for>
+      <a href="#project" class="prcard relative overflow-hidden flex flex-col [background:#ecf4f3] rounded-[16px] [padding:16px_16px_28px] no-underline text-ink [border:1px_solid_#dde5ec] [transition:transform_200ms_ease]">
+          <span aria-hidden="true" class="absolute left-[-120px] bottom-[-180px] w-[420px] h-[420px] rounded-full [background:rgba(10,63,115,0.05)]"></span>
+          <span aria-hidden="true" class="absolute right-[-160px] top-[120px] w-[380px] h-[200px] rounded-[100px] [background:rgba(6,83,91,0.10)] [transform:rotate(-24deg)]"></span>
+          <img src="./assets/cab04aed7ff569c4c980af155b138e32.jpg" alt="" class="relative w-full [aspect-ratio:16_/_10] object-cover block rounded-[10px] bg-white">
+          <span class="relative [padding:24px_8px_0] flex flex-col gap-[14px] [flex:1]">
+            <span class="text-[22px] font-bold leading-[1.3] tracking-[-0.005em]">Форум «Устойчивое развитие горных территорий»</span>
+            <span class="text-[15px] leading-[1.55] text-[#4a5866]">Международная площадка по развитию горных регионов государств СНГ.</span>
+          </span>
+        </a>
+      <a href="#project" class="prcard relative overflow-hidden flex flex-col [background:#f2eff6] rounded-[16px] [padding:16px_16px_28px] no-underline text-ink [border:1px_solid_#dde5ec] [transition:transform_200ms_ease]">
+          <span aria-hidden="true" class="absolute left-[-120px] bottom-[-180px] w-[420px] h-[420px] rounded-full [background:rgba(10,63,115,0.05)]"></span>
+          <span aria-hidden="true" class="absolute right-[-160px] top-[120px] w-[380px] h-[200px] rounded-[100px] [background:rgba(90,31,107,0.09)] [transform:rotate(-24deg)]"></span>
+          <img src="./assets/8463eb4b1ffb99f0aba33d4558e79639.jpg" alt="" class="relative w-full [aspect-ratio:16_/_10] object-cover block rounded-[10px] bg-white">
+          <span class="relative [padding:24px_8px_0] flex flex-col gap-[14px] [flex:1]">
+            <span class="text-[22px] font-bold leading-[1.3] tracking-[-0.005em]">Международная олимпиада для школьников стран СНГ</span>
+            <span class="text-[15px] leading-[1.55] text-[#4a5866]">Олимпиада по гуманитарным и общественным наукам для школьников Содружества.</span>
+          </span>
+        </a>
+      <a href="#project" class="prcard relative overflow-hidden flex flex-col [background:#eef4f9] rounded-[16px] [padding:16px_16px_28px] no-underline text-ink [border:1px_solid_#dde5ec] [transition:transform_200ms_ease]">
+          <span aria-hidden="true" class="absolute left-[-120px] bottom-[-180px] w-[420px] h-[420px] rounded-full [background:rgba(10,63,115,0.05)]"></span>
+          <span aria-hidden="true" class="absolute right-[-160px] top-[120px] w-[380px] h-[200px] rounded-[100px] [background:rgba(0,104,166,0.10)] [transform:rotate(-24deg)]"></span>
+          <img src="./assets/1f84d3e686af24b887d2544b41df2a2f.jpg" alt="" class="relative w-full [aspect-ratio:16_/_10] object-cover block rounded-[10px] bg-white">
+          <span class="relative [padding:24px_8px_0] flex flex-col gap-[14px] [flex:1]">
+            <span class="text-[22px] font-bold leading-[1.3] tracking-[-0.005em]">Конгресс «Интеллектуальный код Содружества»</span>
+            <span class="text-[15px] leading-[1.55] text-[#4a5866]">Научно-образовательный конгресс «Образование 4.0: интеграция науки, технологий и творчества».</span>
+          </span>
+        </a>
     </div>
-    
+
   </div>
 </section>
 
-</main><footer style="background: #0a2540; color: #c9d6e3">
-  <div class="wrap" style="width: 100%; padding: 56px 48px 32px">
-    <div style="display: flex; flex-wrap: wrap; gap: 32px 64px; justify-content: space-between; align-items: flex-start">
-      <div style="flex: 1 1 420px; max-width: 560px; display: flex; flex-direction: column; gap: 18px">
-        <a href="#top" aria-label="МПА СНГ — на главную" style="display: flex; align-items: center; gap: 12px">
-          <img src="./assets/ea5cd78d4ec43cd43285107dabe56045.svg" alt="" style="width: 52px; height: 52px">
-          <img src="./assets/8608defb2ce4c25db9352eb060e27a18.svg" alt="Межпарламентская Ассамблея государств — участников Содружества Независимых Государств" style="height: 40px; width: auto">
+</main><footer class="bg-navy text-[#c9d6e3]">
+  <div class="wrap w-full [padding:56px_48px_32px]">
+    <div class="flex flex-wrap gap-[32px_64px] justify-between items-start">
+      <div class="[flex:1_1_420px] max-w-[560px] flex flex-col gap-[18px]">
+        <a href="#top" aria-label="МПА СНГ — на главную" class="flex items-center gap-3">
+          <img src="./assets/ea5cd78d4ec43cd43285107dabe56045.svg" alt="" class="w-[52px] h-[52px]">
+          <img src="./assets/8608defb2ce4c25db9352eb060e27a18.svg" alt="Межпарламентская Ассамблея государств — участников Содружества Независимых Государств" class="h-10 w-[auto]">
         </a>
-        <p style="margin: 0; font-size: 15px; line-height: 1.6">Межпарламентская Ассамблея государств — участников СНГ — межгосударственный орган парламентского сотрудничества Содружества. Разрабатывает модельное законодательство и наблюдает за выборами.</p>
+        <p class="m-0 text-[15px] leading-[1.6]">Межпарламентская Ассамблея государств — участников СНГ — межгосударственный орган парламентского сотрудничества Содружества. Разрабатывает модельное законодательство и наблюдает за выборами.</p>
       </div>
-      <nav aria-label="Служебные ссылки" style="flex: 1 1 360px">
-        <ul style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px">
-          <li><a href="#contacts" style="display: flex; align-items: center; min-height: 40px; color: #ffffff; font-size: 15px; text-decoration: none">Контакты</a></li>
-          <li><a href="#labor" style="display: flex; align-items: center; min-height: 40px; color: #ffffff; font-size: 15px; text-decoration: none">Охрана труда</a></li>
-          <li><a href="#terms" style="display: flex; align-items: center; min-height: 40px; color: #ffffff; font-size: 15px; text-decoration: none">Условия использования сайта</a></li>
-          <li><a href="#purchases" style="display: flex; align-items: center; min-height: 40px; color: #ffffff; font-size: 15px; text-decoration: none">Закупочная деятельность</a></li>
-          <li><a href="#privacy" style="display: flex; align-items: center; min-height: 40px; color: #ffffff; font-size: 15px; text-decoration: none">Политика конфиденциальности</a></li>
-          
+      <nav aria-label="Служебные ссылки" class="[flex:1_1_360px]">
+        <ul class="list-none m-0 p-0 grid [grid-template-columns:repeat(2,_minmax(0,_1fr))] gap-[0_32px]">
+          <li><a href="#contacts" class="flex items-center min-h-10 text-white text-[15px] no-underline">Контакты</a></li>
+          <li><a href="#labor" class="flex items-center min-h-10 text-white text-[15px] no-underline">Охрана труда</a></li>
+          <li><a href="#terms" class="flex items-center min-h-10 text-white text-[15px] no-underline">Условия использования сайта</a></li>
+          <li><a href="#purchases" class="flex items-center min-h-10 text-white text-[15px] no-underline">Закупочная деятельность</a></li>
+          <li><a href="#privacy" class="flex items-center min-h-10 text-white text-[15px] no-underline">Политика конфиденциальности</a></li>
+
         </ul>
       </nav>
     </div>
-    <div style="margin-top: 40px; padding-top: 24px; border-top: 1px solid #23415f; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center">
-      <p style="margin: 0; font-size: 14px; color: #a9bdd1">© 2026 Межпарламентская Ассамблея государств — участников Содружества Независимых Государств</p>
-      <div style="display: flex; gap: 4px">
-        <a href="#tg" aria-label="Telegram" style="width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; border: 1px solid #2f4f70"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M21 4.5 2.8 11.4c-.8.3-.8 1.4 0 1.7l4.6 1.5 1.8 5.6c.2.7 1.1.9 1.6.4l2.6-2.5 4.7 3.4c.6.4 1.4.1 1.6-.6L22.3 5.8c.2-.9-.6-1.6-1.3-1.3Z"></path><path d="m7.4 14.6 10-7.1-7.6 8.6"></path></svg></a>
-        <a href="#vk" aria-label="ВКонтакте" style="width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; border: 1px solid #2f4f70"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24"><rect x="2.5" y="4.5" width="19" height="15" rx="4.5" fill="none" stroke="currentColor" stroke-width="1.7"></rect><text x="12" y="15.6" text-anchor="middle" font-size="8.5" font-weight="700" fill="currentColor" font-family="Golos Text, sans-serif">VK</text></svg></a>
-        <a href="#yt" aria-label="YouTube" style="width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; border: 1px solid #2f4f70"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="4"></rect><path d="m10 9.3 5 2.7-5 2.7z"></path></svg></a>
-        <a href="#rt" aria-label="Rutube" style="width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; border: 1px solid #2f4f70"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.7"></rect><text x="12" y="16.4" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor" font-family="Golos Text, sans-serif">R</text></svg></a>
+    <div class="mt-10 pt-6 [border-top:1px_solid_#23415f] flex flex-wrap gap-4 justify-between items-center">
+      <p class="m-0 text-[14px] text-[#a9bdd1]">© 2026 Межпарламентская Ассамблея государств — участников Содружества Независимых Государств</p>
+      <div class="flex gap-1">
+        <a href="#tg" aria-label="Telegram" class="w-11 h-11 rounded-full flex items-center justify-center text-white [border:1px_solid_#2f4f70]"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M21 4.5 2.8 11.4c-.8.3-.8 1.4 0 1.7l4.6 1.5 1.8 5.6c.2.7 1.1.9 1.6.4l2.6-2.5 4.7 3.4c.6.4 1.4.1 1.6-.6L22.3 5.8c.2-.9-.6-1.6-1.3-1.3Z"></path><path d="m7.4 14.6 10-7.1-7.6 8.6"></path></svg></a>
+        <a href="#vk" aria-label="ВКонтакте" class="w-11 h-11 rounded-full flex items-center justify-center text-white [border:1px_solid_#2f4f70]"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24"><rect x="2.5" y="4.5" width="19" height="15" rx="4.5" fill="none" stroke="currentColor" stroke-width="1.7"></rect><text x="12" y="15.6" text-anchor="middle" font-size="8.5" font-weight="700" fill="currentColor" font-family="Golos Text, sans-serif">VK</text></svg></a>
+        <a href="#yt" aria-label="YouTube" class="w-11 h-11 rounded-full flex items-center justify-center text-white [border:1px_solid_#2f4f70]"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="4"></rect><path d="m10 9.3 5 2.7-5 2.7z"></path></svg></a>
+        <a href="#rt" aria-label="Rutube" class="w-11 h-11 rounded-full flex items-center justify-center text-white [border:1px_solid_#2f4f70]"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.7"></rect><text x="12" y="16.4" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor" font-family="Golos Text, sans-serif">R</text></svg></a>
       </div>
     </div>
   </div>
 </footer>
 
 </div>
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#0068a6","options":["#0068a6","#0a2540","#007dc3"]},"openMenu":{"editor":"enum","default":"none","options":["none","about","activity","laws","docs","mimrd","news","media"]},"$preview":{"width":1440,"height":4060}}'>
-class Component extends DCLogic {
-  state = { menu: null, search: null, banner: 0, compact: false, mobile: false, prog: 1, docOpen: false, slide: 0, paused: false };
-
-  startHero(paused) {
-    clearInterval(this.ht);
-    if (paused) return;
-    this.ht = setInterval(() => this.setState((s) => ({ slide: (s.slide + 1) % 3 })), 7000);
-  }
-
-  goSlide(i) {
-    this.setState({ slide: (i + 3) % 3 });
-    this.startHero(this.state.paused);
-  }
-
-  componentDidMount() {
-    this.ct = setInterval(() => this.setState({ now: Date.now() }), 15000);
-    const rm = typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (rm) this.setState({ paused: true }); else this.startHero(false);
-    this.bt = setInterval(() => this.setState((s) => ({ banner: (s.banner + 1) % 3 })), 8000);
-    this.onScroll = () => {
-      const c = (window.scrollY || 0) > 40;
-      if (c !== this.state.compact) this.compactSeen = c;
-    };
-    window.addEventListener('scroll', this.onScroll, { passive: true });
-    if (typeof IntersectionObserver !== 'undefined' && this.statsEl) {
-      this.setState({ prog: 0 });
-      this.io = new IntersectionObserver((es) => {
-        if (es.some((e) => e.isIntersecting)) { this.io.disconnect(); this.animate(); }
-      }, { threshold: 0.3 });
-      this.io.observe(this.statsEl);
-    }
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.bt);
-    clearInterval(this.ht);
-    clearInterval(this.ct);
-    window.removeEventListener('scroll', this.onScroll);
-    if (this.io) this.io.disconnect();
-    if (this.raf) cancelAnimationFrame(this.raf);
-  }
-
-  animate() {
-    const t0 = performance.now();
-    const step = (t) => {
-      const p = Math.min(1, (t - t0) / 1400);
-      this.setState({ prog: 1 - Math.pow(1 - p, 3) });
-      if (p < 1) this.raf = requestAnimationFrame(step);
-    };
-    this.raf = requestAnimationFrame(step);
-  }
-
-  renderVals() {
-    const accent = this.props.accent ?? '#0068a6';
-    const nowMs = this.state.now || Date.now();
-    const clock = (off) => { const d = new Date(nowMs + off * 3600000); return String(d.getUTCHours()).padStart(2, '0') + ':' + String(d.getUTCMinutes()).padStart(2, '0'); };
-    const times = { az: clock(4), am: clock(4), by: clock(3), kz: clock(5), kg: clock(6), ru: clock(3), tj: clock(5), uz: clock(5) };
-    const forcedMenu = this.props.openMenu && this.props.openMenu !== 'none' ? this.props.openMenu : null;
-    const menuId = this.state.menu || forcedMenu;
-    const compact = false;
-    const search = this.state.search;
-    const SLIDES = [
-      { img: './assets/e3ed74e777f635c063598b9f321d1f5e.jpg', caption: 'зал заседаний Таврического дворца' },
-      { img: './assets/239fa0ccbf8c4ae6be1bf2afd76e8b73.jpg', caption: 'заседание в Таврическом дворце под флагами государств Содружества' },
-      { img: './assets/7f5cfeca0bcb57130a39380ae416a85e.jpg', caption: 'Таврический дворец — штаб-квартира МПА СНГ, Санкт-Петербург' },
-    ];
-    const si = this.state.slide % SLIDES.length;
-    const paused = this.state.paused;
-
-    const NAV = [
-      { id: 'about', label: 'Об организации', desc: 'История, структура и руководство Ассамблеи, парламенты государств-участников и партнёры.', links: ['История', 'Структура', 'Руководство', 'Членские парламенты', 'Партнёры', 'Контакты'] },
-      { id: 'activity', label: 'Деятельность', desc: 'Основные направления работы МПА СНГ: законотворчество, наблюдение за выборами, проекты и мероприятия.', links: ['Модельное законотворчество', 'Наблюдение за выборами', 'Проекты', 'Мероприятия', 'Международное сотрудничество'] },
-      { id: 'laws', label: 'Законы и рекомендации', desc: 'Каталог модельных законодательных актов и рекомендаций с комментариями.', links: ['Каталог модельных актов', 'Рекомендации', 'Комментарии'] },
-      { id: 'docs', label: 'Документы', desc: 'База документов Ассамблеи с полнотекстовым поиском и фильтрами.', links: ['База документов', 'Регламенты', 'Словари', 'Отчёты'] },
-      { id: 'mimrd', label: 'МИМРД', desc: 'Международный институт мониторинга развития демократии, парламентаризма и соблюдения избирательных прав граждан государств — участников МПА СНГ.', links: ['Об институте', 'Миссии наблюдения', 'Аналитика', 'Публикации'] },
-      { id: 'news', label: 'Новости', desc: 'Новости Ассамблеи, анонсы мероприятий и пресс-релизы.', links: ['Лента новостей', 'Анонсы', 'Пресс-релизы'] },
-      { id: 'media', label: 'Медиа', desc: 'Фото- и видеоматериалы, аккредитация СМИ и контакты пресс-службы.', links: ['Фото', 'Видео', 'Аккредитация', 'Контакты пресс-службы'] },
-    ];
-    const nav = NAV.map((n) => ({
-      label: n.label,
-      expanded: menuId === n.id ? 'true' : 'false',
-      color: menuId === n.id ? accent : '#10202f',
-      bar: menuId === n.id ? accent : 'transparent',
-      hover: () => this.setState({ menu: n.id, search: null }),
-      toggle: () => this.setState((s) => ({ menu: s.menu === n.id ? null : n.id, search: null })),
-    }));
-    const cur = NAV.find((n) => n.id === menuId);
-    let mega = { label: '', desc: '', cols: [] };
-    if (cur) {
-      const half = Math.ceil(cur.links.length / 2);
-      mega = { label: cur.label, desc: cur.desc, cols: cur.links.length > 4 ? [cur.links.slice(0, half), cur.links.slice(half)] : [cur.links] };
-    }
-
-    const chip = (on) => ({ b: on ? accent : '#b9c7d4', bg: on ? '#10202f' : '#ffffff', c: on ? '#ffffff' : '#10202f' });
-    const sc = chip(search === 'site');
-    const dc = chip(search === 'docs');
-
-    const openSite = () => this.setState({ search: 'site', menu: null, mobile: false });
-    const openDocs = () => this.setState({ search: 'docs', menu: null, mobile: false });
-
-    const banners = [
-      { kicker: 'Международный форум', title: 'Дни креативной экономики', text: '28–30 октября 2026 года. Парламентарии, эксперты и представители креативных индустрий государств Содружества.', cta: 'Программа форума', big: '28–30', bg: '#5a1f6b' },
-      { kicker: 'Олимпиада', title: 'Избирательные системы стран мира', text: 'Олимпиада для студентов стран СНГ: подведены итоги, опубликованы списки победителей и призёров.', cta: 'Итоги олимпиады', big: 'МИМРД', bg: '#0a5c8f' },
-      { kicker: 'Для СМИ', title: 'Аккредитация на мероприятия МПА СНГ', text: 'Открыта онлайн-аккредитация журналистов на заседания постоянных комиссий 19 ноября 2026 года.', cta: 'Подать заявку', big: 'PRESS', bg: '#123a5e' },
-    ];
-    const bi = this.state.banner % banners.length;
-    const dots = banners.map((b, i) => ({
-      label: 'Баннер ' + (i + 1) + ': ' + b.title,
-      active: i === bi ? 'true' : 'false',
-      color: i === bi ? '#ffd200' : 'rgba(255,255,255,0.45)',
-      go: () => this.setState({ banner: i }),
-    }));
-
-    const STATS = [
-      { n: 600, suf: '+', label: 'принятых модельных документов' },
-      { n: 9, suf: '', label: 'парламентских делегаций' },
-      { n: 350, suf: '+', label: 'наблюдательных миссий' },
-      { n: 40, suf: '+', label: 'партнёрских организаций' },
-    ];
-    const stats = STATS.map((s) => ({ shown: Math.round(s.n * this.state.prog) + s.suf, label: s.label, asof: 'по состоянию на 01.07.2026' }));
-
-    const st = (s) => s === 'Принят' ? { bg: '#e3f6ea', c: '#13703a' } : s === 'Рекомендация' ? { bg: '#e6edfb', c: '#2346a8' } : { bg: '#fdf1d6', c: '#6b4a00' };
-    const DOCS = [
-      { num: '58-12', status: 'Принят', meeting: 'Пленарное заседание от 14.05.2026 г.', title: 'Модельный закон «О правовом регулировании систем искусственного интеллекта»', desc: 'Устанавливает этические стандарты, рамки ответственности и принципы прозрачности машинного обучения.', size: '1.2 MB' },
-      { num: '58-11', status: 'Принят', meeting: 'Пленарное заседание от 14.05.2026 г.', title: 'Модельный экологический кодекс государств — участников СНГ (новая редакция)', desc: 'Базовый унифицированный свод принципов охраны трансграничных водных бассейнов и биоразнообразия.', size: '2.8 MB' },
-      { num: '58-9', status: 'Рекомендация', meeting: 'Пленарное заседание от 14.05.2026 г.', title: 'Рекомендации по гармонизации законодательства в сфере трансграничного туризма', desc: 'Единые регламенты визового содействия и сертификации межгосударственных туристических маршрутов.', size: '840 KB' },
-      { num: '57-14', status: 'Принят', meeting: 'Пленарное заседание от 17.11.2025 г.', title: 'Глоссарий терминов в сфере цифровой идентификации и кибербезопасности', desc: 'Унифицированный межъязыковой справочник юридических дефиниций и протоколов верификации.', size: '1.5 MB' },
-      { num: '57-08', status: 'Принят', meeting: 'Пленарное заседание от 17.11.2025 г.', title: 'Модельный закон «О противодействии использованию криптовалют в незаконных целях»', desc: 'Механизмы финансового мониторинга транзакций цифровых активов и межгосударственного правоприменения.', size: '980 KB' },
-    ];
-    const docs = DOCS.map((d, i) => { const b = st(d.status); return { ...d, badgeBg: b.bg, badgeC: b.c, rowBg: i % 2 ? '#fafbfd' : '#ffffff', viewLabel: 'Просмотреть: ' + d.title }; });
-
-    return {
-      accent,
-      hdrH: compact ? '60px' : '72px',
-      logoS: compact ? '38px' : '48px',
-      nameH: compact ? '32px' : '40px',
-      slides: SLIDES.map((s, i) => ({ img: s.img, op: i === si ? '1' : '0' })),
-      heroDots: SLIDES.map((s, i) => ({
-        label: 'Слайд ' + (i + 1) + ' из ' + SLIDES.length,
-        active: i === si ? 'true' : 'false',
-        running: i === si && !paused,
-        full: i === si && paused,
-        go: () => this.goSlide(i),
-      })),
-      slideNum: '0' + (si + 1) + ' / 0' + SLIDES.length,
-      slideCaption: 'Фото: ' + SLIDES[si].caption,
-      heroPrev: () => this.goSlide(this.state.slide - 1),
-      heroNext: () => this.goSlide(this.state.slide + 1),
-      isPlaying: !paused,
-      isPaused: paused,
-      pauseLabel: paused ? 'Возобновить автопрокрутку' : 'Остановить автопрокрутку',
-      togglePause: () => { const p = !this.state.paused; this.setState({ paused: p }); this.startHero(p); },
-      nav, mega, megaOpen: !!cur && !search,
-      closeMenu: () => this.setState({ menu: null }),
-      siteOpen: search === 'site' ? 'true' : 'false',
-      docsOpen: search === 'docs' ? 'true' : 'false',
-      siteBg: search === 'site' ? '#e8f2fa' : 'transparent',
-      docsBg: search === 'docs' ? '#e8f2fa' : 'transparent',
-      openSite, openDocs,
-      closeSearch: () => this.setState({ search: null }),
-      searchMax: search ? '200px' : '0px',
-      searchBorder: search ? '#e3e9ef' : 'transparent',
-      searchLabel: search === 'docs' ? 'Поиск по базе документов' : 'Поиск по сайту',
-      searchPh: search === 'docs' ? 'Название, номер или ключевые слова документа' : 'Новости, мероприятия, документы, люди',
-      siteChipB: sc.b, siteChipBg: sc.bg, siteChipC: sc.c,
-      docsChipB: dc.b, docsChipBg: dc.bg, docsChipC: dc.c,
-      noSubmit: (e) => { if (e && e.preventDefault) e.preventDefault(); },
-      mobileOpen: this.state.mobile,
-      toggleMobile: () => this.setState((s) => ({ mobile: !s.mobile, search: null, menu: null })),
-
-      news: [
-        { date: '26 октября 2026', title: 'Наблюдатели от МПА СНГ вели мониторинг выборов в Сербии', img: './assets/239fa0ccbf8c4ae6be1bf2afd76e8b73.jpg', tag: 'Наблюдение за выборами', tagBg: '#0a2540' },
-        { date: '23 октября 2026', title: 'В СНГ разрабатывают Глоссарий в сфере искусственного интеллекта', img: './assets/290848de6df6ba70e0fbb2268bdecaf3.jpg', tag: 'Законотворчество', tagBg: '#0A3F73' },
-        { date: '23 октября 2026', title: 'Парламентарии стран Содружества провели выездную встречу в Ломоносове', img: './assets/7f5cfeca0bcb57130a39380ae416a85e.jpg', tag: 'Мероприятия', tagBg: '#06535b' },
-        { date: '23 октября 2026', title: 'На форуме Ассоциации школ России и Беларуси рассказали о гуманитарной олимпиаде для школьников СНГ', img: './assets/e3ed74e777f635c063598b9f321d1f5e.jpg', tag: 'Образование', tagBg: '#5a1f6b' },
-      ],
-      events: [
-        { day: '28', mon: 'окт', title: 'Международный форум «Дни креативной экономики»', place: '[место проведения]' },
-        { day: '05', mon: 'ноя', title: 'Заседание Экспертного совета по культуре при МПА СНГ', place: '[место проведения]' },
-        { day: '19', mon: 'ноя', title: 'Заседания постоянных комиссий МПА СНГ', place: 'Таврический дворец, Санкт-Петербург' },
-      ],
-      banner: banners[bi], dots, times,
-      bannerList: banners.map((b, i) => ({ ...b, op: i === bi ? '1' : '0', vis: i === bi ? 'visible' : 'hidden', z: i === bi ? '1' : '0', hidden: i === bi ? 'false' : 'true', tab: i === bi ? 0 : -1 })),
-      prevBanner: () => this.setState((s) => ({ banner: (s.banner + 2) % 3 })),
-      nextBanner: () => this.setState((s) => ({ banner: (s.banner + 1) % 3 })),
-
-      stats,
-      setStatsEl: (el) => { this.statsEl = el; },
-
-      docClosed: !this.state.docOpen,
-      docExpanded: this.state.docOpen,
-      expandDocSearch: () => this.setState({ docOpen: true }),
-      tags: ['Регламенты', 'Модельные кодексы', 'Словари и глоссарии', 'Рекомендации', 'Экология и безопасность', 'Цифровая экономика'],
-      docs,
-
-      projects: [
-        { img: './assets/b263eaedf3460a8536a2c79a031146f5.jpg', title: 'Журнал «Диалог: политика, право, экономика»', text: 'Научно-аналитический журнал Ассамблеи о праве, политике и экономике Содружества.', bg: '#eef4f9', shape: 'rgba(0,104,166,0.10)' },
-        { img: './assets/cab04aed7ff569c4c980af155b138e32.jpg', title: 'Форум «Устойчивое развитие горных территорий»', text: 'Международная площадка по развитию горных регионов государств СНГ.', bg: '#ecf4f3', shape: 'rgba(6,83,91,0.10)' },
-        { img: './assets/8463eb4b1ffb99f0aba33d4558e79639.jpg', title: 'Международная олимпиада для школьников стран СНГ', text: 'Олимпиада по гуманитарным и общественным наукам для школьников Содружества.', bg: '#f2eff6', shape: 'rgba(90,31,107,0.09)' },
-        { img: './assets/1f84d3e686af24b887d2544b41df2a2f.jpg', title: 'Конгресс «Интеллектуальный код Содружества»', text: 'Научно-образовательный конгресс «Образование 4.0: интеграция науки, технологий и творчества».', bg: '#eef4f9', shape: 'rgba(0,104,166,0.10)' },
-      ],
-    };
-  }
-}
-</script>
 </body>
 </html>

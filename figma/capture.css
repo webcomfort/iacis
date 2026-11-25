@@ -1,0 +1,15 @@
+/* Keep the capture stable while the extension scrolls the page. */
+*,
+*::before,
+*::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+header {
+  position: static !important;
+}
+
+[data-carousel-go][aria-current="true"] > span {
+  background-color: #ffd200;
+}
